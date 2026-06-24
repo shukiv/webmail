@@ -76,6 +76,7 @@ import { emailToReadView } from "@/lib/plugin-projection";
 import { buildQuoteHeader } from "@/lib/quote-header";
 import { buildReplySubject, buildForwardSubject } from "@/lib/subject-prefix";
 import { useLocaleStore } from "@/stores/locale-store";
+import { getEffectiveLocale } from '@/i18n/detect-locale';
 import type { QuoteHeader } from "@/lib/plugin-types";
 
 const SCHEDULED_MAILBOX_ID = '__scheduled__';
@@ -1263,7 +1264,7 @@ export default function Home() {
         },
         newTo,
         newCc,
-        locale: useLocaleStore.getState().locale,
+        locale: getEffectiveLocale(),
         timeFormat: useSettingsStore.getState().timeFormat,
         unknownLabel: tCommon('unknown'),
         labels: {

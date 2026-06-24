@@ -4,6 +4,7 @@ import { Mailbox, UNIFIED_MAILBOX_IDS } from "./jmap/types";
 import type { UnifiedMailboxRole } from "./jmap/types";
 import { debug } from "./debug";
 import { useLocaleStore } from "@/stores/locale-store";
+import { getEffectiveLocale } from '@/i18n/detect-locale';
 import { useSettingsStore } from "@/stores/settings-store";
 
 export function cn(...inputs: ClassValue[]) {
@@ -60,8 +61,7 @@ export function formatDate(date: Date | string): string {
   const d = typeof date === "string" ? new Date(date) : date;
   const now = new Date();
 
-  const localeRaw = useLocaleStore.getState().locale;
-  const locale = localeRaw && localeRaw.length > 0 ? localeRaw : "en";
+  const locale = getEffectiveLocale();
   // `en` alone resolves to en-US in Intl; everything else uses the language
   // subtag as-is and lets the runtime pick a sensible default region.
   const intlLocale = locale === "en" ? "en-US" : locale;
