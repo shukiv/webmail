@@ -57,18 +57,6 @@ export function generateUUID(): string {
  * Both the locale (from the language picker) and 12h/24h preference are
  * read via `getState()` so this stays SSR-safe.
  */
-// Compact relative-time strings per locale (English default keeps the legacy
-// "1h ago" form). Hebrew: minutes=ד, hours=ש, days=י, "now"=עכשיו.
-const RELATIVE_UNITS: Record<
-  string,
-  { now: string; unit: (n: number, u: "m" | "h" | "d") => string }
-> = {
-  he: {
-    now: "עכשיו",
-    unit: (n, u) => `${n}${u === "m" ? "ד" : u === "h" ? "ש" : "י"}`,
-  },
-};
-
 export function formatDate(date: Date | string): string {
   const d = typeof date === "string" ? new Date(date) : date;
   const now = new Date();
@@ -85,11 +73,13 @@ export function formatDate(date: Date | string): string {
     const minutes = Math.floor(diff / 60000);
     const hours = Math.floor(diff / 3600000);
     const days = Math.floor(diff / 86400000);
-    const rel = RELATIVE_UNITS[locale.split("-")[0]];
-    if (minutes < 1) return rel ? rel.now : "Just now";
-    if (minutes < 60) return rel ? rel.unit(minutes, "m") : `${minutes}m ago`;
-    if (hours < 24) return rel ? rel.unit(hours, "h") : `${hours}h ago`;
-    if (days < 7) return rel ? rel.unit(days, "d") : `${days}d ago`;
+    // Natural, fully localized relative time ("an hour ago" / "לפני שעה",
+    // "2 days ago" / "לפני יומיים") with correct singular/dual/plural per locale.
+    const rtf = new Intl.RelativeTimeFormat(intlLocale, { numeric: "auto" });
+    if (minutes < 1) return rtf.format(0, "second");
+    if (minutes < 60) return rtf.format(-minutes, "minute");
+    if (hours < 24) return rtf.format(-hours, "hour");
+    if (days < 7) return rtf.format(-days, "day");
     return d.toLocaleDateString(intlLocale, {
       month: "short",
       day: "numeric",
