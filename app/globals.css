@@ -808,3 +808,20 @@ body {
   border-radius: 8px;
   animation: settings-search-pulse 1.6s ease-in-out forwards;
 }
+
+/* RTL: mirror directional icons (chevrons/arrows) so prev/next, back/forward,
+   and panel-collapse affordances point the correct way in right-to-left layouts.
+   lucide-react emits a `lucide-<name>` class per icon, so we target the
+   directional ones only — vertical chevrons (up/down) are intentionally left. */
+[dir="rtl"] .lucide-chevron-left,
+[dir="rtl"] .lucide-chevron-right,
+[dir="rtl"] .lucide-chevrons-left,
+[dir="rtl"] .lucide-chevrons-right,
+[dir="rtl"] .lucide-arrow-left,
+[dir="rtl"] .lucide-arrow-right,
+[dir="rtl"] .lucide-arrow-big-left,
+[dir="rtl"] .lucide-arrow-big-right,
+[dir="rtl"] .lucide-panel-left,
+[dir="rtl"] .lucide-panel-right {
+  transform: scaleX(-1);
+}

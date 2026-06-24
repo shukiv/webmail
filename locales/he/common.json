@@ -1020,8 +1020,8 @@
       "first_day": {
         "label": "היום הראשון בשבוע",
         "description": "התחל את השבוע ביום ראשון או שני",
-        "sunday": "יום ראשון",
-        "monday": "יום שני"
+        "sunday": "ראשון",
+        "monday": "שני"
       }
     },
     "email_behavior": {
@@ -2600,20 +2600,20 @@
       "show_birthday_calendar_desc": "הצג לוח שנה וירטואלי עם ימי הולדת מאנשי הקשר שלך"
     },
     "days": {
-      "monday": "יום שני",
-      "tuesday": "יום שלישי",
-      "wednesday": "יום רביעי",
-      "thursday": "יום חמישי",
-      "friday": "יום שישי",
+      "monday": "שני",
+      "tuesday": "שלישי",
+      "wednesday": "רביעי",
+      "thursday": "חמישי",
+      "friday": "שישי",
       "saturday": "שבת",
-      "sunday": "יום ראשון",
-      "mon": "יום שני",
-      "tue": "יום שלישי",
-      "wed": "יום רביעי",
-      "thu": "יום ה'",
+      "sunday": "ראשון",
+      "mon": "שני",
+      "tue": "שלישי",
+      "wed": "רביעי",
+      "thu": "חמישי",
       "fri": "שישי",
       "sat": "שבת",
-      "sun": "שמש"
+      "sun": "ראשון"
     },
     "notifications": {
       "event_created": "האירוע נוצר",
