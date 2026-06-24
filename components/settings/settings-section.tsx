@@ -72,7 +72,7 @@ export function ToggleSwitch({ checked, onChange, disabled }: ToggleSwitchProps)
       <span
         className={cn(
           'inline-block h-4 w-4 transform rounded-full bg-background transition-transform duration-150',
-          checked ? 'translate-x-6' : 'translate-x-1'
+          checked ? 'ltr:translate-x-6 rtl:-translate-x-6' : 'ltr:translate-x-1 rtl:-translate-x-1'
         )}
       />
     </button>

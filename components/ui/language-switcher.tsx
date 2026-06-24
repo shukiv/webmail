@@ -87,7 +87,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
           ref={listRef}
           role="listbox"
           aria-activedescendant={`lang-${choice}`}
-          className="absolute z-50 mt-1 w-full max-h-60 overflow-auto rounded-md border border-border bg-background shadow-lg py-1"
+          className="absolute start-0 z-50 mt-1 min-w-full w-max max-w-[min(16rem,80vw)] max-h-60 overflow-auto rounded-md border border-border bg-background shadow-lg py-1"
         >
           {languages.map((lang) => (
             <li
@@ -100,7 +100,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
                 setOpen(false);
               }}
               className={cn(
-                "flex items-center gap-2 px-3 py-1.5 text-sm cursor-pointer transition-colors duration-100",
+                "flex items-center gap-2 px-3 py-1.5 text-sm cursor-pointer whitespace-nowrap transition-colors duration-100",
                 lang.value === choice
                   ? "bg-accent text-accent-foreground font-medium"
                   : "text-foreground hover:bg-accent/50"

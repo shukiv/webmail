@@ -970,7 +970,7 @@
         "invitation_parsing_desc": "זיהוי הזמנות ליומן בקבצים מצורפים לאימייל והצג פעולות ביומן"
       },
       "push": {
-        "title": "עדכונים בתצוגה אחרונה",
+        "title": "התראות בדפדפן",
         "description": "קבל עדכונים מערכת עבור דוא״ל חדש כאשר אתר זה סגור. מסופק דרך ממסר Bulwark; הממסר לא רואה תוכן דוא״ל.",
         "relay_label": "ממסר דחיפה",
         "relay_desc": "ברירת מחדל של ממסר Bulwark המתורח. שנה רק אם אתה מארח בעצמך.",
@@ -981,10 +981,10 @@
         "status_inactive": "לא מופעל בהתקן זה",
         "status_unsupported": "דפדפן זה אינו תומך בדחיפה ברשת",
         "status_busy": "עובד…",
-        "enable": "הפוך ל",
+        "enable": "הפעל",
         "reenable": "רשום מחדש",
         "disable": "השבת",
-        "confirm_disable_title": "השבת עדכונים בתצוגה אחרונה?",
+        "confirm_disable_title": "השבת התראות בדפדפן?",
         "confirm_disable_message": "התקן זה יפסיק לקבל התראות כאשר האתר סגור.",
         "ios_hint": "ב־iOS, התקן קודם כל את האתר בהיתוך שלך - Safari מספק Web Push רק לPWA מותקנות."
       }
@@ -1311,7 +1311,7 @@
       },
       "shared_accounts": {
         "title": "משותף איתי",
-        "description": "חשבונות קבוצתיים ומשותפים שאתה יכול לנהל. בחר אחד כדי לערוך את המסננים, המגיב לחופשה, הקלנדרים והאנשים שלו.",
+        "description": "חשבונות קבוצתיים ומשותפים שאתה יכול לנהל. בחר אחד כדי לערוך את המסננים, המגיב לחופשה, לוחות השנה והאנשים שלו.",
         "shared_label": "חשבון משותף"
       }
     },
@@ -2413,7 +2413,7 @@
     "title": "לוח שנה",
     "back_to_email": "חזור לדוא״ל",
     "back_to_month": "חזרה לחודש",
-    "my_calendars": "קלנדרים",
+    "my_calendars": "לוחות שנה",
     "birthday_calendar": "ימי הולדת",
     "mini_calendar_change": "לחץ כדי לשנות חודש",
     "views": {
@@ -2707,10 +2707,10 @@
       "url_copied": "כתובת האתר של CalDAV הועתקה ללוח",
       "random_color": "צבע אקראי חדש",
       "set_default": "הגדר כברירת מחדל",
-      "default_updated": "קלנדר ברירת המחדל עודכן",
-      "error_default": "נכשל בהגדרת קלנדר ברירת מחדל",
-      "share": "שתף קלנדר",
-      "new_event_in_calendar": "אירוע חדש בקלנדר זה"
+      "default_updated": "לוח שנה ברירת המחדל עודכן",
+      "error_default": "נכשל בהגדרת לוח שנה ברירת מחדל",
+      "share": "שתף לוח שנה",
+      "new_event_in_calendar": "אירוע חדש בלוח שנה זה"
     },
     "subscription": {
       "title": "מנוי iCal",
@@ -2807,12 +2807,12 @@
     },
     "nav_open_menu": "פתח תפריט",
     "webcal_action": {
-      "title": "פתח קישור קלנדר",
+      "title": "פתח קישור לוח שנה",
       "description": "כיצד היית רוצה להשתמש ב־\"{name}\"?",
       "import_title": "ייבא פעם אחת",
-      "import_description": "קבל את האירועים כעת והעתק אותם לאחד הקלנדרים שלך.",
+      "import_description": "קבל את האירועים כעת והעתק אותם לאחד לוחות השנה שלך.",
       "subscribe_title": "הירשם",
-      "subscribe_description": "שמור את הקלנדר הזה בסנכרון אוטומטי כקלנדר נפרד.",
+      "subscribe_description": "שמור את הלוח שנה הזה בסנכרון אוטומטי כלוח שנה נפרד.",
       "cancel": "בטל"
     }
   },
@@ -3113,7 +3113,7 @@
   "meta_description": "לקוח webmail מינימליסטי באמצעות פרוטוקול JMAP",
   "protocol_handlers": {
     "title": "יישומים ברירת מחדל",
-    "description": "בחר אם קישורי דוא״ל וקלנדר ייפתחו ב־Bulwark. מבחינה טכנית, Bulwark רשום כטיפול בפרוטוקול עבור קישורי mailto: ו־webcal:.",
+    "description": "בחר אם קישורי דוא״ל ולוח שנה ייפתחו ב־Bulwark. מבחינה טכנית, Bulwark רשום כטיפול בפרוטוקול עבור קישורי mailto: ו־webcal:.",
     "unsupported": "דפדפן זה או חיבור זה לא תומך בהרשמה ידנית של טיפול בפרוטוקול. ייתכן שעדיין תוכל להשתמש ב־PWA המותקנת דרך הדפדפן או הגדרות מערכת ההפעלה.",
     "mailto_label": "קישורי דוא״ל",
     "mailto_description": "פתח קישורי mailto: ב־Bulwark עם מחבר שמלא מראש.",
@@ -3123,24 +3123,24 @@
     "protocol_open_mode_new_tab": "פתח תמיד לשונית חדשה",
     "focus_notification_title": "פתח את Bulwark",
     "focus_notification_body": "הקישור נפתח ב־Bulwark. לחץ כדי להביא את החלון לחזית.",
-    "webcal_label": "קישורי קלנדר",
-    "webcal_description": "פתח קישורי webcal: ב־Bulwark עם תיבת דו־שיח מלא מראש להרשמה לקלנדר.",
+    "webcal_label": "קישורי לוח שנה",
+    "webcal_description": "פתח קישורי webcal: ב־Bulwark עם תיבת דו־שיח מלא מראש להרשמה ללוח שנה.",
     "register_mailto": "רשום יישום דוא״ל",
-    "register_webcal": "רשום יישום קלנדר",
+    "register_webcal": "רשום יישום לוח שנה",
     "mailto_registered": "בקש הרשמה של מטפל דוא״ל",
-    "webcal_registered": "בקש הרשמה של מטפל קלנדר",
+    "webcal_registered": "בקש הרשמה של מטפל לוח שנה",
     "registration_failed": "הרשמת טיפול בפרוטוקול נכשלה",
     "opening_mailto": "פתיחת מחבר…",
-    "opening_webcal": "פתיחת קלנדר…",
+    "opening_webcal": "פתיחת לוח שנה…",
     "browser_note": "הדפדפן או מערכת ההפעלה שלך עשויים לבקש ממך לאשר זאת ועשויים לדרוש שBulwark יותקן לפני שניתן לבחור אותו כיישום ברירת המחדל.",
     "select_account_title": "בחר חשבון",
     "select_mailto_account": "בחר איזה חשבון צריך לפתוח קישור דוא״ל זה.",
-    "select_webcal_account": "בחר איזה חשבון צריך לפתוח קישור קלנדר זה.",
+    "select_webcal_account": "בחר איזה חשבון צריך לפתוח קישור לוח שנה זה.",
     "select_account_note": "זה חל רק על קישור פרוטוקול זה.",
     "detail_to": "אל",
     "detail_subject": "נושא",
     "detail_no_subject": "אין נושא",
-    "detail_calendar": "קלנדר",
+    "detail_calendar": "לוח שנה",
     "detail_source": "מקור",
     "active_account": "פעיל",
     "switching_account": "החלפת חשבון…"
