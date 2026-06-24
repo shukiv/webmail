@@ -130,7 +130,7 @@ export function ThreadEmailItem({
 
         {/* Unread indicator */}
         {isUnread && (
-          <div className="absolute left-7 top-1/2 -translate-y-1/2">
+          <div className="absolute start-7 top-1/2 -translate-y-1/2">
             <Circle className="w-1.5 h-1.5 fill-unread text-unread" />
           </div>
         )}
