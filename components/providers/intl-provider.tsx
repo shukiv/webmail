@@ -6,8 +6,10 @@ import { useLocaleStore } from '@/stores/locale-store';
 import csMessages from '@/locales/cs/common.json';
 import daMessages from '@/locales/da/common.json';
 import deMessages from '@/locales/de/common.json';
+import { getLocaleDirection } from '@/i18n/direction';
 import enMessages from '@/locales/en/common.json';
 import esMessages from '@/locales/es/common.json';
+import heMessages from '@/locales/he/common.json';
 import faMessages from '@/locales/fa/common.json';
 import frMessages from '@/locales/fr/common.json';
 import huMessages from '@/locales/hu/common.json';
@@ -31,6 +33,7 @@ const ALL_MESSAGES = {
   de: deMessages,
   en: enMessages,
   es: esMessages,
+  he: heMessages,
   fa: faMessages,
   fr: frMessages,
   hu: huMessages,
@@ -88,6 +91,12 @@ export function IntlProvider({ locale: initialLocale, children }: IntlProviderPr
       setActiveLocale(currentLocale);
     }
   }, [currentLocale]);
+
+  // Keep <html> lang/dir in sync with the active locale (RTL for he/fa).
+  useEffect(() => {
+    document.documentElement.lang = activeLocale;
+    document.documentElement.dir = getLocaleDirection(activeLocale);
+  }, [activeLocale]);
 
   return (
     <NextIntlClientProvider

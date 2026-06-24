@@ -15,6 +15,7 @@ const languages = [
   { value: 'fa', label: 'فارسی' },
   { value: 'es', label: 'Español' },
   { value: 'fr', label: 'Français' },
+  { value: 'he', label: 'עברית' },
   { value: 'it', label: 'Italiano' },
   { value: 'hu', label: 'Magyar' },
   { value: 'lv', label: 'Latviešu' },
