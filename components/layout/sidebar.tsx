@@ -282,8 +282,8 @@ function SidebarRow({
         isVirtual
           ? "text-muted-foreground"
           : isSelected
-            ? "bg-accent text-accent-foreground font-semibold border-l-2 border-primary"
-            : "hover:bg-muted/50 text-foreground border-l-2 border-transparent",
+            ? "bg-accent text-accent-foreground font-semibold border-s-2 border-primary"
+            : "hover:bg-muted/50 text-foreground border-s-2 border-transparent",
         isValidDropTarget && "bg-primary/20 ring-2 ring-primary ring-inset",
         isInvalidDropTarget && "bg-destructive/10 ring-2 ring-destructive/30 ring-inset opacity-50"
       )}
@@ -949,7 +949,7 @@ export function Sidebar({
   return (
     <div
       className={cn(
-        "relative flex flex-col h-full border-r transition-all duration-300 overflow-hidden",
+        "relative flex flex-col h-full border-e transition-all duration-300 overflow-hidden",
         "bg-secondary border-border",
         "max-lg:w-full",
         isCollapsed ? "lg:w-12" : "lg:w-full",

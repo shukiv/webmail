@@ -142,7 +142,7 @@ function FilesSettingsPreview({ settings }: { settings: FilesSettings }) {
   );
 
   const sidebar = settings.folderLayout === "sidebar" && (
-    <div className="w-24 border-r border-border bg-muted/30 py-1.5 flex-shrink-0">
+    <div className="w-24 border-e border-border bg-muted/30 py-1.5 flex-shrink-0">
       <div className="flex items-center gap-1 px-2 py-0.5 text-[10px] font-medium text-foreground">
         <Home className="w-3 h-3 flex-shrink-0" />
         <span className="truncate">Files</span>

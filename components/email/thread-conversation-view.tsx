@@ -488,7 +488,7 @@ function EmailCard({
     <div className={cn(
       "rounded-lg border border-border overflow-hidden transition-all duration-200",
       isExpanded ? "bg-background shadow-sm" : "bg-muted/30",
-      isUnread && !isExpanded && "border-l-2 border-l-primary"
+      isUnread && !isExpanded && "border-s-2 border-l-primary"
     )}>
       {/* Card Header - Always visible */}
       <button

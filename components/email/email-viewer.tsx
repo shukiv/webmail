@@ -644,7 +644,7 @@ export function ContactSidebarPanel({
   };
 
   return (
-    <div className="w-[320px] shrink-0 border-l border-border bg-background flex flex-col h-full animate-in slide-in-from-right-5 duration-200">
+    <div className="w-[320px] shrink-0 border-s border-border bg-background flex flex-col h-full animate-in slide-in-from-right-5 duration-200">
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-3 border-b border-border">
         <h3 className="text-sm font-semibold text-foreground truncate">{t('contact_sidebar.title')}</h3>
@@ -4180,7 +4180,7 @@ export function EmailViewer({
     )}
     {!isScheduled && isMobile && (
       <div className={cn(
-        "fixed inset-y-0 right-0 w-72 bg-background border-l border-border z-[70] sm:hidden",
+        "fixed inset-y-0 right-0 w-72 bg-background border-s border-border z-[70] sm:hidden",
         "transform transition-transform duration-300 ease-in-out",
         "flex flex-col",
         moreMenuOpen ? "translate-x-0" : "translate-x-full"
@@ -5870,7 +5870,7 @@ export function EmailViewer({
       <>
         {/* Collapse toggle when sidebar is collapsed */}
         {detailSidebarCollapsed && (
-          <div className="flex flex-col items-center border-l border-border bg-background">
+          <div className="flex flex-col items-center border-s border-border bg-background">
             <Button
               variant="ghost"
               size="icon"
@@ -5894,7 +5894,7 @@ export function EmailViewer({
               onDoubleClick={() => setDetailSidebarWidth(280)}
             />
             <div
-              className="flex flex-col h-full border-l border-border bg-background overflow-hidden"
+              className="flex flex-col h-full border-s border-border bg-background overflow-hidden"
               style={{ width: detailSidebarWidth, minWidth: detailSidebarWidth }}
             >
               <div className="flex items-center justify-end px-1 py-1 border-b border-border shrink-0">

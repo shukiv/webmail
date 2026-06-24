@@ -306,7 +306,7 @@ export function CalendarWeekView({
 
       <div className="flex border-b border-border" role="row">
         <div className={cn("flex-shrink-0", isMobile ? "w-10 sticky left-0 z-10 bg-background" : "w-14")} />
-        <div className="flex-1 border-l border-border grid grid-cols-7">
+        <div className="flex-1 border-s border-border grid grid-cols-7">
           {weekDays.map((day) => {
             const todayCol = isToday(day);
             const selected = isSameDay(day, selectedDate);
@@ -318,7 +318,7 @@ export function CalendarWeekView({
                 role="columnheader"
                 aria-label={fullLabel}
                 className={cn(
-                  "text-center py-2 text-sm border-r border-border last:border-r-0 transition-colors touch-manipulation",
+                  "text-center py-2 text-sm border-e border-border last:border-e-0 transition-colors touch-manipulation",
                   "hover:bg-muted/50",
                   todayCol && "font-bold",
                 )}
@@ -357,7 +357,7 @@ export function CalendarWeekView({
             ))}
           </div>
 
-          <div className="flex-1 border-l border-border relative grid grid-cols-7">
+          <div className="flex-1 border-s border-border relative grid grid-cols-7">
             {weekDays.map((day) => {
               const key = format(day, "yyyy-MM-dd");
               const dayEvents = timedEvents.get(key) || [];
@@ -367,7 +367,7 @@ export function CalendarWeekView({
               return (
                 <div
                   key={key}
-                  className="relative border-r border-border last:border-r-0"
+                  className="relative border-e border-border last:border-e-0"
                   role="row"
                   aria-label={intlFormatter.dateTime(day, { weekday: "long", month: "long", day: "numeric" })}
                   onPointerDown={(e) => handleGridPointerDown(e, key, day)}

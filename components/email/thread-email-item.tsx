@@ -87,7 +87,7 @@ export function ThreadEmailItem({
       className={cn(
         "relative cursor-pointer select-none transition-all duration-150",
         "ps-12 pe-4",
-        "border-l-2 border-l-transparent",
+        "border-s-2 border-l-transparent",
         selected
           ? "bg-selection border-l-primary"
           : "hover:bg-muted/50",

@@ -2002,7 +2002,7 @@ export function EmailComposer({
     <div ref={composerRootRef} className={cn("flex h-full bg-background", className)}>
       <PluginSlot
         name="composer-sidebar"
-        className="hidden md:flex shrink-0 h-full overflow-hidden border-r border-border"
+        className="hidden md:flex shrink-0 h-full overflow-hidden border-e border-border"
       />
       {/* Right-side composer sidebar slot is rendered after the main content div below. */}
     <div
@@ -2563,7 +2563,7 @@ export function EmailComposer({
                   onClick={() => handleSend()}
                   disabled={!canSend || isSending}
                   title={getSendTooltip()}
-                  className="rounded-r-none border-r border-primary-foreground/20"
+                  className="rounded-r-none border-e border-primary-foreground/20"
                 >
                   <Send className="w-4 h-4 me-2" />
                   {t('send')}
@@ -2795,7 +2795,7 @@ export function EmailComposer({
     </div>
       <PluginSlot
         name="composer-sidebar-right"
-        className="hidden md:flex shrink-0 h-full overflow-hidden border-l border-border"
+        className="hidden md:flex shrink-0 h-full overflow-hidden border-s border-border"
       />
     </div>
   );

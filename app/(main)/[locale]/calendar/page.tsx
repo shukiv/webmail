@@ -1336,7 +1336,7 @@ export default function CalendarPage() {
         <>
           <div
             className={cn(
-              "border-r border-border bg-secondary overflow-y-auto flex-shrink-0 p-3",
+              "border-e border-border bg-secondary overflow-y-auto flex-shrink-0 p-3",
               !isResizing && "transition-[width] duration-300",
               isNarrow && cn(
                 "absolute inset-y-0 left-0 z-50 w-72 pt-[env(safe-area-inset-top)]",
@@ -1475,7 +1475,7 @@ export default function CalendarPage() {
 
           {/* Desktop event panel */}
           {!isMobile && showEventModal && (
-            <div className="w-[400px] border-l border-border flex-shrink-0 overflow-hidden">
+            <div className="w-[400px] border-s border-border flex-shrink-0 overflow-hidden">
               <EventModal
                 key={editEvent?.id ?? 'new'}
                 event={editEvent}
@@ -1498,7 +1498,7 @@ export default function CalendarPage() {
 
           {/* Desktop task panel */}
           {!isMobile && showTaskModal && (
-            <div className="w-[400px] border-l border-border flex-shrink-0 overflow-hidden">
+            <div className="w-[400px] border-s border-border flex-shrink-0 overflow-hidden">
               <TaskModal
                 key={editTask?.id ?? 'new-task'}
                 task={editTask}

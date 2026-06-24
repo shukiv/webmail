@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { useLocale } from 'next-intl';
 import { useLocaleStore } from '@/stores/locale-store';
 import { ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { flagComponents } from './flag-icons';
 
 const languages = [
+  { value: 'auto', label: 'Auto' },
   { value: 'cs', label: 'Česky' },
   { value: 'da', label: 'Dansk' },
   { value: 'de', label: 'Deutsch' },
@@ -38,13 +38,13 @@ function FlagIcon({ locale }: { locale: string }) {
 }
 
 export function LanguageSwitcher({ className }: { className?: string }) {
-  const currentLocale = useLocale();
   const setLocale = useLocaleStore((state) => state.setLocale);
+  const choice = useLocaleStore((state) => state.locale) || 'auto';
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
 
-  const current = languages.find((l) => l.value === currentLocale) ?? languages[0];
+  const current = languages.find((l) => l.value === choice) ?? languages[0];
 
   // Close on outside click
   useEffect(() => {
@@ -86,7 +86,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
         <ul
           ref={listRef}
           role="listbox"
-          aria-activedescendant={`lang-${currentLocale}`}
+          aria-activedescendant={`lang-${choice}`}
           className="absolute z-50 mt-1 w-full max-h-60 overflow-auto rounded-md border border-border bg-background shadow-lg py-1"
         >
           {languages.map((lang) => (
@@ -94,14 +94,14 @@ export function LanguageSwitcher({ className }: { className?: string }) {
               key={lang.value}
               id={`lang-${lang.value}`}
               role="option"
-              aria-selected={lang.value === currentLocale}
+              aria-selected={lang.value === choice}
               onClick={() => {
                 setLocale(lang.value);
                 setOpen(false);
               }}
               className={cn(
                 "flex items-center gap-2 px-3 py-1.5 text-sm cursor-pointer transition-colors duration-100",
-                lang.value === currentLocale
+                lang.value === choice
                   ? "bg-accent text-accent-foreground font-medium"
                   : "text-foreground hover:bg-accent/50"
               )}

@@ -940,7 +940,7 @@ export default function SettingsPage() {
       <>
       <div
         className={cn(
-          "border-r border-border bg-secondary flex flex-col",
+          "border-e border-border bg-secondary flex flex-col",
           !isResizing && "transition-[width] duration-300"
         )}
         style={{ width: `${settingsSidebarWidth}px` }}

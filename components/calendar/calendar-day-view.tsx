@@ -231,7 +231,7 @@ export function CalendarDayView({
           </div>
 
           <div
-            className="flex-1 relative border-l border-border"
+            className="flex-1 relative border-s border-border"
             role="row"
             aria-label={t("views.day")}
             onPointerDown={(e) => handleGridPointerDown(e, dayKey, selectedDate)}

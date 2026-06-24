@@ -1267,7 +1267,7 @@ export function FileBrowser({
         )}
         {/* Favorites & Recent sidebar (when layout is inline) */}
         {folderLayout === "inline" && (favorites.length > 0 || recentFiles.length > 0) && (
-          <div className="w-48 border-r border-border bg-background overflow-y-auto shrink-0 hidden lg:block">
+          <div className="w-48 border-e border-border bg-background overflow-y-auto shrink-0 hidden lg:block">
             {favorites.length > 0 && (
               <div className="p-3">
                 <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2 flex items-center gap-1">
@@ -1926,7 +1926,7 @@ export function FileBrowser({
 
         {/* Details sidebar */}
         {showDetails && detailResource && (
-          <div role="complementary" aria-label={t("details")} className="w-64 border-l border-border bg-background p-4 overflow-y-auto shrink-0 hidden md:block">
+          <div role="complementary" aria-label={t("details")} className="w-64 border-s border-border bg-background p-4 overflow-y-auto shrink-0 hidden md:block">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm font-medium">{t("details")}</h3>
               <button onClick={onToggleDetails} className="text-muted-foreground hover:text-foreground">

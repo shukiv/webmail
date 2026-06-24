@@ -275,7 +275,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   return (
     <div className="min-h-screen flex bg-background">
       {/* Slim webmail nav rail (desktop only) */}
-      <nav className="hidden md:flex w-14 bg-secondary flex-col items-center py-3 gap-2 border-r border-border sticky top-0 h-screen shrink-0">
+      <nav className="hidden md:flex w-14 bg-secondary flex-col items-center py-3 gap-2 border-e border-border sticky top-0 h-screen shrink-0">
         {logoUrl ? (
           <img src={logoUrl} alt="" className="w-7 h-7 object-contain mb-2" />
         ) : (
@@ -326,7 +326,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       </nav>
 
       {/* Admin Sidebar (desktop only) */}
-      <aside className="hidden md:flex w-60 border-r border-border bg-secondary flex-col sticky top-0 h-screen">
+      <aside className="hidden md:flex w-60 border-e border-border bg-secondary flex-col sticky top-0 h-screen">
         <div className="h-14 flex items-center px-4 border-b border-border shrink-0">
           {logoUrl ? (
             <img src={logoUrl} alt="" className="w-5 h-5 object-contain me-2" />
@@ -350,7 +350,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* Mobile drawer */}
       <aside
         className={cn(
-          'md:hidden fixed inset-y-0 left-0 z-50 w-72 max-w-[85vw] border-r border-border bg-secondary flex flex-col transition-transform duration-200 ease-out',
+          'md:hidden fixed inset-y-0 left-0 z-50 w-72 max-w-[85vw] border-e border-border bg-secondary flex flex-col transition-transform duration-200 ease-out',
           mobileNavOpen ? 'translate-x-0' : '-translate-x-full'
         )}
         aria-label="Admin navigation"

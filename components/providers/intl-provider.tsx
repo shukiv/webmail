@@ -8,6 +8,7 @@ import daMessages from '@/locales/da/common.json';
 import deMessages from '@/locales/de/common.json';
 import { getLocaleDirection } from '@/i18n/direction';
 import { mergeMessages } from '@/i18n/merge-messages';
+import { detectBrowserLocale } from '@/i18n/detect-locale';
 import enMessages from '@/locales/en/common.json';
 import esMessages from '@/locales/es/common.json';
 import heMessages from '@/locales/he/common.json';
@@ -60,7 +61,6 @@ interface IntlProviderProps {
 
 export function IntlProvider({ locale: initialLocale, children }: IntlProviderProps) {
   const currentLocale = useLocaleStore((state) => state.locale);
-  const setLocale = useLocaleStore((state) => state.setLocale);
   const [activeLocale, setActiveLocale] = useState(initialLocale);
   const [timeZone, setTimeZone] = useState<string>('UTC');
 
@@ -76,21 +76,16 @@ export function IntlProvider({ locale: initialLocale, children }: IntlProviderPr
     }
   }, []);
 
-  // First mount: seed the store from the server-resolved locale if nothing is persisted.
+  // Resolve the active locale from the user's stored choice. Empty or 'auto'
+  // means "follow the browser" (English default); a specific code forces it and
+  // is never overridden by detection.
   useEffect(() => {
-    if (!currentLocale) {
-      setLocale(initialLocale);
-    } else {
-      setActiveLocale(currentLocale);
-    }
+    setActiveLocale(
+      !currentLocale || currentLocale === 'auto'
+        ? detectBrowserLocale(initialLocale)
+        : currentLocale
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // Switch locale immediately when store changes
-  useEffect(() => {
-    if (currentLocale) {
-      setActiveLocale(currentLocale);
-    }
   }, [currentLocale]);
 
   // Keep <html> lang/dir in sync with the active locale (RTL for he/fa).
