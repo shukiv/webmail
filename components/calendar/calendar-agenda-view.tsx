@@ -131,7 +131,7 @@ export function CalendarAgendaView({
             )}>
               {formatDateHeader(group.date)}
             </span>
-            <span className="text-xs text-muted-foreground ml-2">
+            <span className="text-xs text-muted-foreground ms-2">
               {intlFormatter.dateTime(group.date, { month: "short", day: "numeric", year: "numeric" })}
             </span>
           </div>
@@ -159,7 +159,7 @@ export function CalendarAgendaView({
                   onMouseEnter={(e) => onHoverEvent?.(ev, e.currentTarget.getBoundingClientRect())}
                   onMouseLeave={() => onHoverLeave?.()}
                   onContextMenu={onContextMenuEvent ? (e) => onContextMenuEvent(e, ev) : undefined}
-                  className="w-full flex items-start px-4 hover:bg-muted/50 transition-colors text-left"
+                  className="w-full flex items-start px-4 hover:bg-muted/50 transition-colors text-start"
                   style={{ gap: 'var(--density-item-gap)', paddingBlock: 'var(--density-item-py)' }}
                 >
                   <div className="flex flex-col items-center pt-0.5 min-w-[60px]">

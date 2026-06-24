@@ -212,7 +212,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                     type="button"
                     onClick={handleClick}
                     className={cn(
-                      'w-full text-left px-3 py-2 rounded-md text-sm transition-colors duration-150 flex items-center gap-2.5',
+                      'w-full text-start px-3 py-2 rounded-md text-sm transition-colors duration-150 flex items-center gap-2.5',
                       active
                         ? 'bg-accent text-accent-foreground font-medium'
                         : 'hover:bg-muted text-foreground'
@@ -248,7 +248,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <Link
             href="/admin/change-password"
             className={cn(
-              'w-full text-left px-3 py-2 rounded-md text-sm transition-colors duration-150 flex items-center gap-2.5',
+              'w-full text-start px-3 py-2 rounded-md text-sm transition-colors duration-150 flex items-center gap-2.5',
               pathname === '/admin/change-password'
                 ? 'bg-accent text-accent-foreground font-medium'
                 : 'hover:bg-muted text-foreground'
@@ -263,7 +263,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         )}
         <button
           onClick={handleLogout}
-          className="w-full text-left px-3 py-2 rounded-md text-sm transition-colors duration-150 flex items-center gap-2.5 hover:bg-muted text-foreground"
+          className="w-full text-start px-3 py-2 rounded-md text-sm transition-colors duration-150 flex items-center gap-2.5 hover:bg-muted text-foreground"
         >
           <LogOut className="w-4 h-4 shrink-0 text-muted-foreground" />
           Sign out
@@ -329,9 +329,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <aside className="hidden md:flex w-60 border-r border-border bg-secondary flex-col sticky top-0 h-screen">
         <div className="h-14 flex items-center px-4 border-b border-border shrink-0">
           {logoUrl ? (
-            <img src={logoUrl} alt="" className="w-5 h-5 object-contain mr-2" />
+            <img src={logoUrl} alt="" className="w-5 h-5 object-contain me-2" />
           ) : (
-            <Shield className="w-5 h-5 text-primary mr-2" />
+            <Shield className="w-5 h-5 text-primary me-2" />
           )}
           <span className="font-semibold text-sm text-foreground">Admin Panel</span>
         </div>
@@ -359,9 +359,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="h-14 flex items-center justify-between px-3 border-b border-border shrink-0">
           <div className="flex items-center min-w-0">
             {logoUrl ? (
-              <img src={logoUrl} alt="" className="w-5 h-5 object-contain mr-2" />
+              <img src={logoUrl} alt="" className="w-5 h-5 object-contain me-2" />
             ) : (
-              <Shield className="w-5 h-5 text-primary mr-2" />
+              <Shield className="w-5 h-5 text-primary me-2" />
             )}
             <span className="font-semibold text-sm text-foreground truncate">Admin Panel</span>
           </div>
@@ -391,9 +391,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </button>
           <div className="flex items-center min-w-0">
             {logoUrl ? (
-              <img src={logoUrl} alt="" className="w-5 h-5 object-contain mr-2" />
+              <img src={logoUrl} alt="" className="w-5 h-5 object-contain me-2" />
             ) : (
-              <Shield className="w-5 h-5 text-primary mr-2" />
+              <Shield className="w-5 h-5 text-primary me-2" />
             )}
             <span className="font-semibold text-sm text-foreground truncate">Admin Panel</span>
           </div>

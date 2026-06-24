@@ -106,7 +106,7 @@ export function SmimePassphraseDialog({
                   onChange={(e) => setPassphrase(e.target.value)}
                   placeholder={t("passphrase_placeholder")}
                   autoFocus
-                  className="pr-10"
+                  className="pe-10"
                   autoComplete="off"
                 />
                 <button

@@ -751,7 +751,7 @@ export default function ContactsPage() {
                   <button
                     key={group.id}
                     onClick={() => handleBulkAddToGroupConfirm(group.id)}
-                    className="w-full flex items-center gap-3 px-6 py-3 text-left hover:bg-muted transition-colors"
+                    className="w-full flex items-center gap-3 px-6 py-3 text-start hover:bg-muted transition-colors"
                   >
                     <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                       <Users className="w-4 h-4 text-primary" />
@@ -991,7 +991,7 @@ export default function ContactsPage() {
                     onClick={mobileBackToList}
                     className="touch-manipulation"
                   >
-                    <ArrowLeft className="w-4 h-4 mr-2" />
+                    <ArrowLeft className="w-4 h-4 me-2" />
                     {returnToEmail ? t("back_to_email") : t("back_to_contacts")}
                   </Button>
                 </div>

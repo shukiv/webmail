@@ -86,7 +86,7 @@ export function ThreadEmailItem({
       {...longPressHandlers}
       className={cn(
         "relative cursor-pointer select-none transition-all duration-150",
-        "pl-12 pr-4",
+        "ps-12 pe-4",
         "border-l-2 border-l-transparent",
         selected
           ? "bg-selection border-l-primary"

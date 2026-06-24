@@ -254,7 +254,7 @@ export function SmimeSettings() {
                     </p>
                     <p className="text-xs text-muted-foreground">
                       {record.issuer} · {t("expires")} {formatDate(record.notAfter)}
-                      {expired && <span className="text-destructive ml-1">({t("expired")})</span>}
+                      {expired && <span className="text-destructive ms-1">({t("expired")})</span>}
                     </p>
                     {boundIdentities.length > 0 && (
                       <p className="text-xs text-muted-foreground">
@@ -335,7 +335,7 @@ export function SmimeSettings() {
           disabled={isLoading}
           className="mt-2"
         >
-          <Upload className="w-4 h-4 mr-2" />
+          <Upload className="w-4 h-4 me-2" />
           {t("import_pkcs12")}
         </Button>
       </SettingsSection>
@@ -364,7 +364,7 @@ export function SmimeSettings() {
                     </p>
                     <p className="text-xs text-muted-foreground">
                       {cert.issuer} · {cert.source}
-                      {expired && <span className="text-destructive ml-1">({t("expired")})</span>}
+                      {expired && <span className="text-destructive ms-1">({t("expired")})</span>}
                     </p>
                   </div>
                 </div>
@@ -413,7 +413,7 @@ export function SmimeSettings() {
           disabled={isLoading}
           className="mt-2"
         >
-          <Upload className="w-4 h-4 mr-2" />
+          <Upload className="w-4 h-4 me-2" />
           {t("import_public_cert")}
         </Button>
       </SettingsSection>

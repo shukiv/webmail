@@ -78,7 +78,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
         aria-expanded={open}
       >
         <FlagIcon locale={current.value} />
-        <span className="flex-1 text-left">{current.label}</span>
+        <span className="flex-1 text-start">{current.label}</span>
         <ChevronDown className={cn("h-3.5 w-3.5 text-muted-foreground transition-transform duration-150", open && "rotate-180")} />
       </button>
 

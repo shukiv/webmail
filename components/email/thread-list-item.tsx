@@ -863,7 +863,7 @@ export const ThreadListItem = React.forwardRef<HTMLDivElement, ThreadListItemPro
           <div className="bg-muted/20 animate-in slide-in-from-top-2 duration-200">
             {isLoading ? (
               <div className="py-4 flex items-center justify-center text-sm text-muted-foreground">
-                <Loader2 className="w-4 h-4 animate-spin mr-2" />
+                <Loader2 className="w-4 h-4 animate-spin me-2" />
                 {t('loading')}
               </div>
             ) : (

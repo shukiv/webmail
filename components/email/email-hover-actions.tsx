@@ -186,7 +186,7 @@ export function EmailHoverActions({
           maskImage: "linear-gradient(to right, transparent, black)",
         }}
       />
-      <div className={cn("flex items-center gap-0.5 h-full pr-3 pl-0.5", hoverBackgroundClassName)}>
+      <div className={cn("flex items-center gap-0.5 h-full pe-3 ps-0.5", hoverBackgroundClassName)}>
         {actionButtons}
       </div>
     </div>

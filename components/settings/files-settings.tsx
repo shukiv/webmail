@@ -84,8 +84,8 @@ function FilesSettingsPreview({ settings }: { settings: FilesSettings }) {
     <div className="flex-1 min-w-0 overflow-hidden">
       <div className="flex items-center gap-3 px-2 py-1 text-[10px] font-medium text-muted-foreground border-b border-border bg-muted/50">
         <span className="flex-1 min-w-0">Name</span>
-        <span className="w-14 text-right">Size</span>
-        <span className="w-16 text-right">Modified</span>
+        <span className="w-14 text-end">Size</span>
+        <span className="w-16 text-end">Modified</span>
       </div>
       {sortedFiles.map((file) => (
         <div
@@ -103,10 +103,10 @@ function FilesSettingsPreview({ settings }: { settings: FilesSettings }) {
           <span className={cn("flex-1 min-w-0 truncate text-[11px]", file.isFolder && "font-medium")}>
             {file.name}
           </span>
-          <span className="w-14 text-right text-[10px] text-muted-foreground tabular-nums">
+          <span className="w-14 text-end text-[10px] text-muted-foreground tabular-nums">
             {formatSize(file.size)}
           </span>
-          <span className="w-16 text-right text-[10px] text-muted-foreground tabular-nums">
+          <span className="w-16 text-end text-[10px] text-muted-foreground tabular-nums">
             {file.modified.slice(5)}
           </span>
         </div>

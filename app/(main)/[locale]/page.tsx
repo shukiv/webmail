@@ -2736,7 +2736,7 @@ export default function Home() {
                       placeholder={t("sidebar.search_placeholder_hint")}
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className={cn("pl-9 h-9", searchQuery && "pr-8")}
+                      className={cn("ps-9 h-9", searchQuery && "pe-8")}
                       data-search-input
                       data-tour="search-input"
                       disabled={isUnifiedView || isScheduledView}
@@ -2803,7 +2803,7 @@ export default function Home() {
                     </div>
                     <div className="flex items-center gap-1">
                       <Button variant="ghost" size="sm" onClick={() => { clearSearchFilters(); setShowAdvancedFields(false); if (client) advancedSearch(client); }} className="h-7 px-2 text-xs text-muted-foreground">
-                        <RotateCcw className="w-3 h-3 mr-1" />
+                        <RotateCcw className="w-3 h-3 me-1" />
                         {t("advanced_search.clear")}
                       </Button>
                     </div>
@@ -3148,13 +3148,13 @@ export default function Home() {
                   setShowComposer(true);
                   if (isMobile) setActiveView('viewer');
                 }}
-                className="flex items-center gap-3 px-4 py-2.5 bg-primary/10 border-b border-primary/20 hover:bg-primary/15 transition-colors cursor-pointer w-full text-left"
+                className="flex items-center gap-3 px-4 py-2.5 bg-primary/10 border-b border-primary/20 hover:bg-primary/15 transition-colors cursor-pointer w-full text-start"
               >
                 <PenLine className="w-4 h-4 text-primary shrink-0" />
                 <div className="flex-1 min-w-0">
                   <span className="text-sm font-medium text-primary">{t('email_composer.continue_draft')}</span>
                   {pendingDraft.subject && (
-                    <span className="text-xs text-muted-foreground ml-2 truncate">{pendingDraft.subject}</span>
+                    <span className="text-xs text-muted-foreground ms-2 truncate">{pendingDraft.subject}</span>
                   )}
                 </div>
                 <X

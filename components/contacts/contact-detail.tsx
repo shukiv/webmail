@@ -268,7 +268,7 @@ export function ContactDetail({ contact, onEdit, onDelete, onAddToGroup, onDupli
                 onClick={onCompose}
                 className="touch-manipulation"
               >
-                <Send className="w-4 h-4 mr-1" />
+                <Send className="w-4 h-4 me-1" />
                 {t("detail.compose_email")}
               </Button>
             )}
@@ -277,12 +277,12 @@ export function ContactDetail({ contact, onEdit, onDelete, onAddToGroup, onDupli
                 href={`tel:${phone}`}
                 className="inline-flex items-center justify-center rounded-md font-medium h-9 px-3 text-sm border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors touch-manipulation"
               >
-                <Phone className="w-4 h-4 mr-1" />
+                <Phone className="w-4 h-4 me-1" />
                 {t("context_menu.call")}
               </a>
             )}
             <Button variant="outline" size="sm" onClick={onEdit} className="touch-manipulation">
-              <Pencil className="w-4 h-4 mr-1" />
+              <Pencil className="w-4 h-4 me-1" />
               {t("form.edit_title")}
             </Button>
             <MoreActionsMenu items={moreItems} label={t("detail.more_actions")} />
@@ -512,23 +512,23 @@ export function ContactDetail({ contact, onEdit, onDelete, onAddToGroup, onDupli
                           )}
                           <span className="text-sm font-medium truncate">{certInfo.subject}</span>
                         </div>
-                        <div className="text-xs text-muted-foreground space-y-0.5 pl-6">
+                        <div className="text-xs text-muted-foreground space-y-0.5 ps-6">
                           <p>{t("detail.cert_issuer")}: {certInfo.issuer}</p>
                           <p>
                             {t("detail.cert_expires")}: {new Date(certInfo.notAfter).toLocaleDateString()}
-                            {isExpired && <span className="text-destructive ml-1">({t("detail.cert_expired")})</span>}
+                            {isExpired && <span className="text-destructive ms-1">({t("detail.cert_expired")})</span>}
                           </p>
                           <p>{t("detail.cert_fingerprint")}: {certInfo.fingerprint.substring(0, 20)}...</p>
                           {certInfo.algorithm && <p>{t("detail.cert_algorithm")}: {certInfo.algorithm}</p>}
                         </div>
                         {!alreadyImported && (
-                          <Button variant="ghost" size="sm" className="ml-4 mt-1" onClick={() => handleImportContactCert(i)}>
-                            <Download className="w-3 h-3 mr-1" />
+                          <Button variant="ghost" size="sm" className="ms-4 mt-1" onClick={() => handleImportContactCert(i)}>
+                            <Download className="w-3 h-3 me-1" />
                             {t("detail.import_to_smime")}
                           </Button>
                         )}
                         {alreadyImported && (
-                          <p className="text-xs text-green-600 pl-6 mt-1">{t("detail.cert_already_imported")}</p>
+                          <p className="text-xs text-green-600 ps-6 mt-1">{t("detail.cert_already_imported")}</p>
                         )}
                       </>
                     ) : (
@@ -693,7 +693,7 @@ function MoreActionsMenu({ items, label }: { items: MoreItem[]; label: string })
                   setOpen(false);
                 }}
                 className={cn(
-                  "w-full flex items-center gap-2 px-3 py-1.5 text-sm text-left hover:bg-muted focus:bg-muted focus:outline-none transition-colors",
+                  "w-full flex items-center gap-2 px-3 py-1.5 text-sm text-start hover:bg-muted focus:bg-muted focus:outline-none transition-colors",
                   item.destructive && "text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950 focus:bg-red-50 dark:focus:bg-red-950",
                 )}
               >

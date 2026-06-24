@@ -231,7 +231,7 @@ export function LayoutSettings() {
       )}
 
       {enableUnifiedMailbox && hasGroupInboxes && !isSettingHidden('includeGroupInUnified') && (
-        <div className="ml-4 border-l-2 border-border pl-4 -mt-2">
+        <div className="ms-4 border-l-2 border-border ps-4 -mt-2">
           <SettingItem
             label={t('unified_mailbox.include_group.label')}
             description={t('unified_mailbox.include_group.description')}
@@ -246,7 +246,7 @@ export function LayoutSettings() {
       )}
 
       {enableUnifiedMailbox && crossViews.some(c => c.allowed) && (
-        <div className="ml-4 border-l-2 border-border pl-4 -mt-2 space-y-2">
+        <div className="ms-4 border-l-2 border-border ps-4 -mt-2 space-y-2">
           {crossViews.map(({ setting, value, allowed, labelKey, descKey }) => (
             allowed && !isSettingHidden(setting) && (
               <SettingItem
@@ -279,7 +279,7 @@ export function LayoutSettings() {
       )}
 
       {allMailViewAllowed && enableAllMailView && (
-        <div className="ml-4 border-l-2 border-border pl-4 -mt-2 space-y-2">
+        <div className="ms-4 border-l-2 border-border ps-4 -mt-2 space-y-2">
           <div>
             <div className="text-sm font-medium text-foreground">{t('all_mail.folders_label')}</div>
             <div className="text-xs text-muted-foreground">{t('all_mail.folders_description')}</div>
@@ -298,7 +298,7 @@ export function LayoutSettings() {
                     key={mb.id}
                     type="button"
                     onClick={() => toggleAllMailFolder(mb.id)}
-                    className="w-full flex items-center gap-2.5 py-1.5 px-2 rounded-md hover:bg-muted/50 text-left"
+                    className="w-full flex items-center gap-2.5 py-1.5 px-2 rounded-md hover:bg-muted/50 text-start"
                     role="checkbox"
                     aria-checked={checked}
                   >

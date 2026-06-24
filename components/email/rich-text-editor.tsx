@@ -478,28 +478,28 @@ export function RichTextEditor({
                 <div className="flex flex-col gap-0.5">
                   <button
                     type="button"
-                    className="flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-accent text-left"
+                    className="flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-accent text-start"
                     onClick={() => { editor.chain().focus().addRowBefore().run(); setTableMenuOpen(false); }}
                   >
                     <Rows3 className="w-4 h-4" /> Add row above
                   </button>
                   <button
                     type="button"
-                    className="flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-accent text-left"
+                    className="flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-accent text-start"
                     onClick={() => { editor.chain().focus().addRowAfter().run(); setTableMenuOpen(false); }}
                   >
                     <Rows3 className="w-4 h-4" /> Add row below
                   </button>
                   <button
                     type="button"
-                    className="flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-accent text-left"
+                    className="flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-accent text-start"
                     onClick={() => { editor.chain().focus().addColumnBefore().run(); setTableMenuOpen(false); }}
                   >
                     <Columns3 className="w-4 h-4" /> Add column before
                   </button>
                   <button
                     type="button"
-                    className="flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-accent text-left"
+                    className="flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-accent text-start"
                     onClick={() => { editor.chain().focus().addColumnAfter().run(); setTableMenuOpen(false); }}
                   >
                     <Columns3 className="w-4 h-4" /> Add column after
@@ -507,21 +507,21 @@ export function RichTextEditor({
                   <div className="h-px bg-border my-1" />
                   <button
                     type="button"
-                    className="flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-accent text-left"
+                    className="flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-accent text-start"
                     onClick={() => { editor.chain().focus().deleteRow().run(); setTableMenuOpen(false); }}
                   >
                     <Trash2 className="w-4 h-4" /> Delete row
                   </button>
                   <button
                     type="button"
-                    className="flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-accent text-left"
+                    className="flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-accent text-start"
                     onClick={() => { editor.chain().focus().deleteColumn().run(); setTableMenuOpen(false); }}
                   >
                     <Trash2 className="w-4 h-4" /> Delete column
                   </button>
                   <button
                     type="button"
-                    className="flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-accent text-left"
+                    className="flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-accent text-start"
                     onClick={() => { editor.chain().focus().toggleHeaderRow().run(); setTableMenuOpen(false); }}
                   >
                     <Rows3 className="w-4 h-4" /> Toggle header row
@@ -529,7 +529,7 @@ export function RichTextEditor({
                   <div className="h-px bg-border my-1" />
                   <button
                     type="button"
-                    className="flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-accent text-left text-red-600 dark:text-red-400"
+                    className="flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-accent text-start text-red-600 dark:text-red-400"
                     onClick={() => { editor.chain().focus().deleteTable().run(); setTableMenuOpen(false); }}
                   >
                     <Trash2 className="w-4 h-4" /> Delete table

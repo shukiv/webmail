@@ -219,7 +219,7 @@ function SidebarRowCounts({
   ) : null;
 
   return (
-    <span className="ml-2 flex-shrink-0 flex items-baseline gap-1" title={`${unreadCount} unread / ${totalCount} total`}>
+    <span className="ms-2 flex-shrink-0 flex items-baseline gap-1" title={`${unreadCount} unread / ${totalCount} total`}>
       {unreadNode}
       {unreadCount > 0 && totalCount > 0 && (
         <span className="text-xs text-muted-foreground/60">/</span>
@@ -278,7 +278,7 @@ function SidebarRow({
       style={{ paddingBlock: 'var(--density-sidebar-py)' }}
       className={cn(
         "group w-full flex items-center max-lg:min-h-[44px] text-sm transition-colors duration-150",
-        isCollapsed ? "justify-center px-1" : "pr-2",
+        isCollapsed ? "justify-center px-1" : "pe-2",
         isVirtual
           ? "text-muted-foreground"
           : isSelected
@@ -320,7 +320,7 @@ function SidebarRow({
         disabled={isVirtual}
         className={cn(
           "flex items-center gap-2 min-w-0 transition-colors",
-          isCollapsed ? "justify-center" : "flex-1 text-left",
+          isCollapsed ? "justify-center" : "flex-1 text-start",
           isVirtual && "cursor-default select-none"
         )}
         title={isCollapsed ? label : undefined}
@@ -389,8 +389,8 @@ function SidebarSectionHeader({
       ) : (
         <ChevronRight className="w-3.5 h-3.5 text-muted-foreground flex-shrink-0" />
       )}
-      {icon && <span className="ml-1.5 flex-shrink-0">{icon}</span>}
-      <span className={cn(textClass, icon ? "ml-1.5" : "ml-1.5")}>
+      {icon && <span className="ms-1.5 flex-shrink-0">{icon}</span>}
+      <span className={cn(textClass, icon ? "ms-1.5" : "ms-1.5")}>
         {label}
       </span>
       {onSettings && (
@@ -408,7 +408,7 @@ function SidebarSectionHeader({
               onSettings();
             }
           }}
-          className="ml-auto p-1 rounded text-muted-foreground/70 hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
+          className="ms-auto p-1 rounded text-muted-foreground/70 hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
           title={settingsTitle}
         >
           <Settings className="w-3.5 h-3.5" />
@@ -664,7 +664,7 @@ function VacationBanner() {
     >
       <Palmtree className="w-3.5 h-3.5 flex-shrink-0" />
       <span className="truncate font-medium">{t("vacation_active")}</span>
-      <Settings className="w-3 h-3 ml-auto flex-shrink-0 opacity-60" />
+      <Settings className="w-3 h-3 ms-auto flex-shrink-0 opacity-60" />
     </button>
   );
 }

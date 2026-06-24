@@ -65,7 +65,7 @@ export function ComposingSettings() {
             ]}
           />
           {sendDelaySeconds > 0 && !delayedSendSupported && (
-            <p className="max-w-64 text-right text-xs text-amber-600 dark:text-amber-400">{t('send_delay.unsupported')}</p>
+            <p className="max-w-64 text-end text-xs text-amber-600 dark:text-amber-400">{t('send_delay.unsupported')}</p>
           )}
         </div>
       </SettingItem>

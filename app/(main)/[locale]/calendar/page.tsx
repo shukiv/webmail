@@ -1149,13 +1149,13 @@ export default function CalendarPage() {
         </div>
         <div className="px-6 py-4 space-y-3">
           <Button variant="outline" className="w-full justify-start h-auto py-3" onClick={handleImportWebcal}>
-            <span className="text-left">
+            <span className="text-start">
               <span className="block font-medium">{tWebcalAction("import_title")}</span>
               <span className="block text-xs text-muted-foreground mt-0.5">{tWebcalAction("import_description")}</span>
             </span>
           </Button>
           <Button variant="outline" className="w-full justify-start h-auto py-3" onClick={handleSubscribeWebcal}>
-            <span className="text-left">
+            <span className="text-start">
               <span className="block font-medium">{tWebcalAction("subscribe_title")}</span>
               <span className="block text-xs text-muted-foreground mt-0.5">{tWebcalAction("subscribe_description")}</span>
             </span>

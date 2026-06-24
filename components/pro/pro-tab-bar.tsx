@@ -193,7 +193,7 @@ export function ProTabBar({
                   onClose(tab.id);
                 }}
                 className={cn(
-                  "ml-1 flex items-center justify-center w-4 h-4 rounded-sm transition-colors flex-shrink-0",
+                  "ms-1 flex items-center justify-center w-4 h-4 rounded-sm transition-colors flex-shrink-0",
                   "text-muted-foreground hover:bg-muted-foreground/20 hover:text-foreground",
                   !isActive && "opacity-0 group-hover:opacity-100 focus-visible:opacity-100",
                 )}

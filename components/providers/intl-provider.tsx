@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import { useLocaleStore } from '@/stores/locale-store';
 import csMessages from '@/locales/cs/common.json';
 import daMessages from '@/locales/da/common.json';
 import deMessages from '@/locales/de/common.json';
 import { getLocaleDirection } from '@/i18n/direction';
+import { mergeMessages } from '@/i18n/merge-messages';
 import enMessages from '@/locales/en/common.json';
 import esMessages from '@/locales/es/common.json';
 import heMessages from '@/locales/he/common.json';
@@ -98,10 +99,20 @@ export function IntlProvider({ locale: initialLocale, children }: IntlProviderPr
     document.documentElement.dir = getLocaleDirection(activeLocale);
   }, [activeLocale]);
 
+  // Fall back to English for any key the active locale has not translated, so
+  // untranslated strings show English text instead of a raw message key.
+  const messages = useMemo(
+    () => mergeMessages(
+      ALL_MESSAGES.en as Record<string, unknown>,
+      (ALL_MESSAGES[activeLocale as keyof typeof ALL_MESSAGES] ?? {}) as Record<string, unknown>
+    ),
+    [activeLocale]
+  );
+
   return (
     <NextIntlClientProvider
       locale={activeLocale}
-      messages={ALL_MESSAGES[activeLocale as keyof typeof ALL_MESSAGES] ?? ALL_MESSAGES.en}
+      messages={messages}
       timeZone={timeZone}
     >
       {children}
