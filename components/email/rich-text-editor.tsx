@@ -8,6 +8,7 @@ import Heading from "@tiptap/extension-heading";
 import Underline from "@tiptap/extension-underline";
 import Link from "@tiptap/extension-link";
 import TextAlign from "@tiptap/extension-text-align";
+import { TextDirection } from "@/components/email/text-direction";
 import { TextStyle } from "@tiptap/extension-text-style";
 import Color from "@tiptap/extension-color";
 import { ResizableImage } from "@/components/email/resizable-image";
@@ -19,6 +20,7 @@ import { TableCell } from "@tiptap/extension-table-cell";
 import { QuotedHtml, serializeEditorContent } from "@/components/email/quoted-html";
 import { SignatureBlock } from "@/components/email/signature-block";
 import { cn } from "@/lib/utils";
+import { useSettingsStore } from "@/stores/settings-store";
 import {
   Bold,
   Italic,
@@ -29,6 +31,7 @@ import {
   AlignLeft,
   AlignCenter,
   AlignRight,
+  ArrowLeftRight,
   Link as LinkIcon,
   Undo,
   Redo,
@@ -183,6 +186,7 @@ export function RichTextEditor({
   hasError,
   onEditorReady,
 }: RichTextEditorProps) {
+  const rtlEditingSupport = useSettingsStore((st) => st.rtlEditingSupport);
   const onImageUploadRef = React.useRef(onImageUpload);
   onImageUploadRef.current = onImageUpload;
   const onEditorReadyRef = React.useRef(onEditorReady);
@@ -240,6 +244,7 @@ export function RichTextEditor({
       // rich/branded signatures keep their inline styling in the editor and
       // in the sent mail (see signature-block.ts).
       SignatureBlock,
+      TextDirection,
     ],
     content,
     editorProps: {
@@ -453,6 +458,22 @@ export function RichTextEditor({
         >
           <AlignRight className="w-4 h-4" />
         </ToolbarButton>
+
+        {rtlEditingSupport && (
+          <ToolbarButton
+            active={
+              (editor.getAttributes("paragraph").dir || editor.getAttributes("heading").dir) === "rtl"
+            }
+            onClick={() => {
+              const cur =
+                editor.getAttributes("paragraph").dir || editor.getAttributes("heading").dir;
+              editor.chain().focus().setTextDirection(cur === "rtl" ? "ltr" : "rtl").run();
+            }}
+            title="Text direction (RTL/LTR)"
+          >
+            <ArrowLeftRight className="w-4 h-4" />
+          </ToolbarButton>
+        )}
 
         <ToolbarSeparator />
 

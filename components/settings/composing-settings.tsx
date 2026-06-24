@@ -23,6 +23,7 @@ export function ComposingSettings() {
   const {
     autoSelectReplyIdentity,
     plainTextMode,
+    rtlEditingSupport,
     attachmentReminderEnabled,
     attachmentReminderKeywords,
     sendDelaySeconds,
@@ -49,6 +50,13 @@ export function ComposingSettings() {
         <ToggleSwitch
           checked={plainTextMode}
           onChange={(checked) => updateSetting('plainTextMode', checked)}
+        />
+      </SettingItem>
+
+      <SettingItem label={t('rtl_editing.label')} description={t('rtl_editing.description')}>
+        <ToggleSwitch
+          checked={rtlEditingSupport}
+          onChange={(checked) => updateSetting('rtlEditingSupport', checked)}
         />
       </SettingItem>
 
