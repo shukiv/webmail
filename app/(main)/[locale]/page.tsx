@@ -3026,7 +3026,7 @@ export default function Home() {
               }}
               className={cn(
                 "absolute z-40 rounded-full shadow-lg",
-                isMobile ? "bottom-4 right-4 h-14 w-14" : "bottom-4 right-4 h-12 w-12"
+                isMobile ? "bottom-4 end-4 h-14 w-14" : "bottom-4 end-4 h-12 w-12"
               )}
               aria-label={t('sidebar.compose')}
               title={t('sidebar.compose_hint')}

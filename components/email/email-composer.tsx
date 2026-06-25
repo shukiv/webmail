@@ -2563,7 +2563,7 @@ export function EmailComposer({
                   onClick={() => handleSend()}
                   disabled={!canSend || isSending}
                   title={getSendTooltip()}
-                  className="rounded-r-none border-e border-primary-foreground/20"
+                  className="rounded-e-none border-e border-primary-foreground/20"
                 >
                   <Send className="w-4 h-4 me-2" />
                   {t('send')}
@@ -2573,7 +2573,7 @@ export function EmailComposer({
                   onClick={() => setShowSendMenu((open) => !open)}
                   disabled={!canSend || isSending}
                   title={t('schedule_send')}
-                  className="rounded-l-none px-2"
+                  className="rounded-s-none px-2"
                   aria-haspopup="menu"
                   aria-expanded={showSendMenu}
                 >
