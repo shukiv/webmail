@@ -719,7 +719,7 @@ body {
 
 .tiptap p.is-editor-empty:first-child::before {
   content: attr(data-placeholder);
-  float: left;
+  float: inline-start;
   color: var(--color-muted-foreground);
   pointer-events: none;
   height: 0;
