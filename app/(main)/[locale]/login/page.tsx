@@ -676,7 +676,7 @@ export default function LoginPage() {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-background via-muted/10 to-muted/30 relative px-4">
         {/* Theme toggle */}
-        <div className="absolute top-5 right-5" ref={themeMenuRef} suppressHydrationWarning>
+        <div className="absolute top-5 end-5" ref={themeMenuRef} suppressHydrationWarning>
           <button
             type="button"
             onClick={() => setShowThemeMenu(!showThemeMenu)}
@@ -696,7 +696,7 @@ export default function LoginPage() {
 
           {showThemeMenu && (
             <div
-              className="absolute right-0 top-full mt-2 w-40 rounded-xl border border-border bg-background shadow-lg overflow-hidden animate-fade-in z-50"
+              className="absolute end-0 top-full mt-2 w-40 rounded-xl border border-border bg-background shadow-lg overflow-hidden animate-fade-in z-50"
               role="listbox"
               aria-label="Theme selection"
             >
@@ -825,7 +825,7 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-background via-muted/10 to-muted/30 relative px-4">
       {/* Theme toggle - top right, dropdown style */}
-      <div className="absolute top-5 right-5" ref={themeMenuRef} suppressHydrationWarning>
+      <div className="absolute top-5 end-5" ref={themeMenuRef} suppressHydrationWarning>
         <button
           type="button"
           onClick={() => setShowThemeMenu(!showThemeMenu)}
@@ -845,7 +845,7 @@ export default function LoginPage() {
 
         {showThemeMenu && (
           <div
-            className="absolute right-0 top-full mt-2 w-40 rounded-xl border border-border bg-background shadow-lg overflow-hidden animate-fade-in z-50"
+            className="absolute end-0 top-full mt-2 w-40 rounded-xl border border-border bg-background shadow-lg overflow-hidden animate-fade-in z-50"
             role="listbox"
             aria-label="Theme selection"
           >
@@ -1044,6 +1044,7 @@ export default function LoginPage() {
                       <Input
                         id="jmap-endpoint"
                         type="url"
+                        dir="ltr"
                         value={jmapEndpoint}
                         onChange={(e) => setJmapEndpoint(e.target.value)}
                         className="h-11 px-3.5 bg-muted/40 border-border/60 rounded-xl focus:bg-background focus:border-primary/50 transition-all duration-200"
@@ -1066,6 +1067,7 @@ export default function LoginPage() {
                         ref={inputRef}
                         id="username"
                         type="text"
+                        dir="ltr"
                         value={formData.username}
                         onChange={handleUsernameChange}
                         onFocus={handleUsernameFocus}
@@ -1119,6 +1121,7 @@ export default function LoginPage() {
                       <Input
                         id="password"
                         type={showPassword ? "text" : "password"}
+                        dir="ltr"
                         value={formData.password}
                         onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                         className="h-11 px-3.5 pe-11 bg-muted/40 border-border/60 rounded-xl focus:bg-background focus:border-primary/50 transition-all duration-200"
