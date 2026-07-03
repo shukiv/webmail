@@ -136,7 +136,9 @@
     "scheduled": "מתוכננים",
     "unified_all_unread": "הכל שלא נקראו",
     "unified_all_starred": "הכל מסומנים",
-    "unified_all_mail": "הכל דוא״ל"
+    "unified_all_mail": "הכל דוא״ל",
+    "remove_account": "הסר חשבון",
+    "remove_account_confirm": "להסיר את {account} מהמכשיר? אפשר להוסיף אותו שוב מאוחר יותר."
   },
   "sidebar_apps": {
     "modal_title": "אפליקציות בסרגל הצד",
