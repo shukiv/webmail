@@ -3777,7 +3777,7 @@ export function EmailViewer({
               {showToolbarLabels && <span className="text-[10px] leading-tight sm:text-sm">{t('move')}</span>}
             </Button>
             {moveMenuOpen && (
-              <div className="absolute right-0 top-full mt-1 py-1 w-48 max-h-72 overflow-y-auto bg-background rounded-lg shadow-lg border border-border z-10">
+              <div className="absolute end-0 top-full mt-1 py-1 w-48 max-h-72 overflow-y-auto bg-background rounded-lg shadow-lg border border-border z-10">
                 {(() => {
                   const renderNodes = (nodes: MailboxNode[], depth = 0) => {
                     return nodes.map((node) => {
@@ -3848,7 +3848,7 @@ export function EmailViewer({
             )}
           </button>
           {tagMenuOpen && (
-            <div className="absolute right-0 top-full mt-1 py-1 w-40 bg-background rounded-lg shadow-lg border border-border z-10">
+            <div className="absolute end-0 top-full mt-1 py-1 w-40 bg-background rounded-lg shadow-lg border border-border z-10">
               {colorOptions.map((option) => {
                 const isActive = currentColors.includes(option.value);
                 return (
@@ -3975,7 +3975,7 @@ export function EmailViewer({
             <span className="text-[10px] leading-tight sm:hidden">{t('more_actions')}</span>
           </Button>
           {moreMenuOpen && !isMobile && (
-            <div className="absolute right-0 top-full mt-1 w-48 bg-background rounded-md shadow-lg border border-border z-10 py-1">
+            <div className="absolute end-0 top-full mt-1 w-48 bg-background rounded-md shadow-lg border border-border z-10 py-1">
               {/* Star toggle */}
               <button
                 onClick={() => { onToggleStar?.(); setMoreMenuOpen(false); setMoreMenuSub(null); }}
@@ -4031,7 +4031,7 @@ export function EmailViewer({
                     <ChevronRight className="w-3 h-3 text-muted-foreground" />
                   </button>
                   {moreMenuSub === 'move' && (
-                    <div className="absolute right-full top-0 me-1 py-1 w-48 max-h-72 overflow-y-auto bg-background rounded-md shadow-lg border border-border z-10">
+                    <div className="absolute end-full top-0 me-1 py-1 w-48 max-h-72 overflow-y-auto bg-background rounded-md shadow-lg border border-border z-10">
                       {(() => {
                         const renderMobileNodes = (nodes: MailboxNode[], depth = 0) => {
                           return nodes.map((node) => {
@@ -4083,7 +4083,7 @@ export function EmailViewer({
                     <ChevronRight className="w-3 h-3 text-muted-foreground" />
                   </button>
                   {moreMenuSub === 'tag' && (
-                    <div className="absolute right-full top-0 me-1 py-1 w-40 bg-background rounded-md shadow-lg border border-border z-10">
+                    <div className="absolute end-full top-0 me-1 py-1 w-40 bg-background rounded-md shadow-lg border border-border z-10">
                       {colorOptions.map((option) => {
                         const isActive = currentColors.includes(option.value);
                         return (
