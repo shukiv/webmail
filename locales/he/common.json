@@ -483,7 +483,7 @@
     "details": {
       "recipients_routing": "נמענים ו־ניתוב",
       "authentication_security": "אימות וביטחון",
-      "identifiers_threading": "מזהים וחוטים",
+      "identifiers_threading": "מזהים ושרשורים",
       "mailing_list": "רשימת תפוצה",
       "message_properties": "מאפייני הודעה",
       "sent": "נשלח",
@@ -792,7 +792,7 @@
       "appearance": "מראה",
       "language": "שפה ואזור",
       "email": "התנהגות אימייל",
-      "composer": "מלחין",
+      "composer": "עורך",
       "privacy": "פרטיות ואבטחה",
       "account": "חשבון",
       "identities": "זהויות",
@@ -1228,7 +1228,7 @@
       }
     },
     "composer": {
-      "title": "מלחין",
+      "title": "עורך",
       "description": "הגדר את הגדרות הרכב דוא\"ל",
       "autosave": {
         "label": "מרווח שמירה אוטומטית",
@@ -1898,7 +1898,7 @@
     "email_list_error": "לא ניתן לטעון מיילים",
     "viewer_error_title": "לא ניתן להציג אימייל",
     "viewer_error_description": "הייתה בעיה בעיבוד האימייל הזה. הוא עשוי להכיל תוכן שאינו נתמך.",
-    "composer_error": "לא ניתן לטעון את המלחין",
+    "composer_error": "לא ניתן לטעון את העורך",
     "settings_error_title": "ההגדרות לא זמינות",
     "settings_error_description": "לא ניתן לטעון הגדרות. ייתכן שההעדפות שלך לא יישמרו.",
     "try_again": "נסה שוב",
@@ -1937,8 +1937,8 @@
       "navigation": "ניווט",
       "actions": "פעולות אימייל",
       "global": "גלובלי",
-      "threads": "חוטים",
-      "composer": "מלחין"
+      "threads": "שרשורים",
+      "composer": "עורך"
     },
     "navigation": {
       "next_email": "המייל הבא",
@@ -3091,7 +3091,7 @@
     "settings_desc": "התאם אישית הכל: ערכת נושא, צפיפות, חתימות, מסננים, קיצורי מקלדת, ברירות מחדל של לוח שנה ועוד.",
     "shortcuts_title": "קיצורי מקלדת",
     "shortcuts_desc": "משתמשי כוח אוהבים את זה. לחץ על? בכל עת כדי לראות את כל קיצורי הדרך הזמינים. אתה יכול לנווט, לכתוב ולנהל מיילים מבלי לגעת בעכבר.",
-    "compose_open_title": "המלחין",
+    "compose_open_title": "העורך",
     "compose_open_desc": "זה כותב הדוא\"ל. הוסף נמענים, כתוב את ההודעה שלך, צרף קבצים והשתמש בעיצוב טקסט עשיר. אתה יכול גם לשמור טיוטות ולהשתמש בתבניות.",
     "calendar_view_title": "לוח השנה שלך",
     "calendar_view_desc": "הנה היומן שלך עם אירועים לדוגמה. אתה יכול לעבור בין תצוגות יום, שבוע, חודש וסדר יום באמצעות סרגל הכלים.",
