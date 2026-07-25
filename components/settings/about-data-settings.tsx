@@ -51,6 +51,9 @@ function VersionUpdateTag() {
 export function AboutDataSettings() {
   const t = useTranslations('settings.advanced');
   const tCommon = useTranslations('common');
+  // next-intl has no relative ("../") namespace navigation; cross-namespace
+  // keys must be absolute paths resolved from a root translator.
+  const tRoot = useTranslations();
   const { settingsSyncDisabled, updateSetting, resetToDefaults, exportSettings, importSettings } =
     useSettingsStore();
   const { settingsSyncEnabled } = useConfig();
@@ -99,9 +102,9 @@ export function AboutDataSettings() {
       const json = event.target?.result as string;
       const success = importSettings(json);
       if (success) {
-        alert(t('../../settings.import_success'));
+        alert(tRoot('settings.import_success'));
       } else {
-        alert(t('../../settings.import_error'));
+        alert(tRoot('settings.import_error'));
       }
     };
     reader.readAsText(file);
@@ -120,7 +123,7 @@ export function AboutDataSettings() {
     if (showResetConfirm) {
       resetToDefaults();
       setShowResetConfirm(false);
-      alert(t('../../settings.save_success'));
+      alert(tRoot('settings.save_success'));
     } else {
       setShowResetConfirm(true);
       setTimeout(() => setShowResetConfirm(false), 5000);
