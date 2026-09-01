@@ -3579,6 +3579,8 @@ export function MailApp({ linkSegments }: MailAppProps = {}) {
               sidebarId={sidebarId}
               onOpenSearch={isMobile ? () => setMobileSearchOpen(true) : undefined}
               searchPlaceholder={searchQuery || t('sidebar.search_placeholder_hint')}
+              searchActive={!!searchQuery}
+              onClearSearch={handleClearSearch}
             />
 
             {/* Search Bar + Inline Advanced Filters. On phones this is not a
