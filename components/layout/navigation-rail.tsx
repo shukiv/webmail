@@ -26,6 +26,7 @@ import { useStalwartAdmin } from "@/hooks/use-stalwart-admin";
 import { KeyboardShortcutsModal } from "@/components/keyboard-shortcuts-modal";
 import { getPathPrefix, withBasePath } from "@/lib/browser-navigation";
 import { Avatar } from "@/components/ui/avatar";
+import { accountAvatarSrc } from "@/lib/account-avatar";
 import { toUnicodeEmail } from "@/lib/idn";
 
 interface NavItem {
@@ -204,7 +205,7 @@ export function NavigationRail({
   const tGlobalSearch = useTranslations("global_search");
   const pathname = usePathname();
   const router = useRouter();
-  const { appLogoLightUrl, appLogoDarkUrl } = useConfig();
+  const { appLogoLightUrl, appLogoDarkUrl, accountAvatarEnabled } = useConfig();
   const resolvedTheme = useThemeStore((s) => s.resolvedTheme);
   const { supportsCalendar } = useCalendarStore();
   const { mailboxes } = useEmailStore();
@@ -716,6 +717,7 @@ export function NavigationRail({
                   title={`${toUnicodeEmail(account.displayName || account.label)} (${toUnicodeEmail(account.email || account.username)})`}
                 >
                   <Avatar
+                    src={accountAvatarSrc(accountAvatarEnabled, account.cookieSlot)}
                     name={account.displayName || account.label}
                     email={account.email || account.username}
                     size="sm"

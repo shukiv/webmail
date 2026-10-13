@@ -308,10 +308,17 @@ export const CONFIG_ENV_MAP: Record<string, { envVar: string; fileEnvVar?: strin
   // than the browser (docker networks, split DNS). The base path of a
   // sub-path install is added to a bare origin (#1130).
   wopiHostUrl: { envVar: 'WOPI_HOST_URL', type: 'url', defaultValue: '' },
+  // The signed-in account's own picture, from a service that knows it (a
+  // hosting panel, a directory). Empty = feature off. The webmail POSTs
+  // {"email": "<the signed-in address>"} there, server to server, with
+  // `Authorization: Bearer <accountAvatarKey>`, and shows a PNG, JPEG, GIF
+  // or WebP it answers with; any other answer leaves the usual avatar.
+  accountAvatarUrl: { envVar: 'ACCOUNT_AVATAR_URL', type: 'url', defaultValue: '' },
+  accountAvatarKey: { envVar: 'ACCOUNT_AVATAR_KEY', fileEnvVar: 'ACCOUNT_AVATAR_KEY_FILE', fileKey: 'accountAvatarKeyFile', type: 'string', defaultValue: '' },
 };
 
 /** Keys that should never be exposed to the client config endpoint */
-export const SENSITIVE_CONFIG_KEYS = new Set(['oauthClientSecret', 'sessionSecret']);
+export const SENSITIVE_CONFIG_KEYS = new Set(['oauthClientSecret', 'sessionSecret', 'accountAvatarKey']);
 
 /** Admin session cookie name */
 export const ADMIN_SESSION_COOKIE = 'admin_session';

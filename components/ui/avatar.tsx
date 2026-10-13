@@ -148,15 +148,24 @@ interface AvatarProps {
   disableFavicon?: boolean;
   /** Background color used when no image source resolves. Overrides the hash-based default. */
   fallbackColor?: string;
+  /** An image that comes before every other source, such as the signed-in account's own picture (/api/account-avatar). When it fails to load, the other sources are tried. */
+  src?: string;
 }
 
-export function Avatar({ name, email, contactPhotoUri, size = "md", className, disableImages = false, disableFavicon = false, fallbackColor }: AvatarProps) {
-  const [imgError, setImgError] = useState(false);
+export function Avatar({ name, email, contactPhotoUri, size = "md", className, disableImages = false, disableFavicon = false, fallbackColor, src }: AvatarProps) {
+  // Image URLs that failed to load here. Each is skipped, so a broken one
+  // falls through to the next source and finally to the initials, rather
+  // than staying on screen as an empty circle.
+  const [failed, setFailed] = useState<ReadonlySet<string>>(() => new Set());
   const [pluginAvatarUrl, setPluginAvatarUrl] = useState<string | null>(null);
   const [pluginAvatarFailed, setPluginAvatarFailed] = useState(false);
   const senderFavicons = useSettingsStore((s) => s.senderFavicons);
   const contacts = useContactStore((s) => s.contacts);
   const { devMode } = useConfig();
+
+  useEffect(() => {
+    setFailed(new Set());
+  }, [email, src]);
 
   // Ask plugins (e.g. Gravatar) to resolve an avatar URL for this email address.
   // Runs whenever email or name changes; resets plugin avatar state on each change.
@@ -233,28 +242,23 @@ export function Avatar({ name, email, contactPhotoUri, size = "md", className, d
   const profilePic = email && domain ? getProfilePictureUrl(email, domain, devMode, name) : null;
   // Sender favicons come from the /api/favicon proxy, absent in the static build.
   const showFavicon =
-    !IS_LITE && !disableFavicon && senderFavicons && faviconDomain && !PERSONAL_DOMAINS.has(faviconDomain) && !imgError && !domainFailed;
+    !IS_LITE && !disableFavicon && senderFavicons && faviconDomain && !PERSONAL_DOMAINS.has(faviconDomain) && !domainFailed;
 
-  // Priority: contact photo > plugin avatar (e.g. Gravatar) > custom avatar > profile picture > company favicon > initials
+  // Priority: given src > contact photo > plugin avatar (e.g. Gravatar) > custom avatar > profile picture > company favicon > initials
   const customAvatar = devMode && email ? CUSTOM_AVATARS[email.toLowerCase()] : null;
   const pluginAvatar = pluginAvatarFailed ? null : pluginAvatarUrl;
-  const photoSrc = resolvedContactPhoto || pluginAvatar || customAvatar || profilePic || null;
-  const faviconSrc = !imgError && !domainFailed && showFavicon ? withBasePath(`/api/favicon?domain=${encodeURIComponent(faviconDomain!)}`) : null;
-  const imgSrc = disableImages ? null : (photoSrc || faviconSrc);
+  const faviconSrc = showFavicon ? withBasePath(`/api/favicon?domain=${encodeURIComponent(faviconDomain!)}`) : null;
+  const candidates = disableImages ? [] : [src, resolvedContactPhoto, pluginAvatar, customAvatar, profilePic, faviconSrc];
+  const imgSrc = candidates.find((c): c is string => !!c && !failed.has(c)) ?? null;
   const isFavicon = imgSrc !== null && imgSrc === faviconSrc;
 
   const handleImgError = useCallback(() => {
-    // If the plugin avatar just failed, mark it and fall through to the next source
-    if (pluginAvatar && imgSrc === pluginAvatar) {
-      setPluginAvatarFailed(true);
-      return;
-    }
-    setImgError(true);
-    // If this was a favicon URL (not a contact photo, plugin avatar, custom avatar or profile pic), remember the domain
-    if (faviconDomain && !resolvedContactPhoto && !pluginAvatar && !customAvatar && !profilePic) {
-      failedFaviconDomains.add(faviconDomain);
-    }
-  }, [imgSrc, pluginAvatar, faviconDomain, resolvedContactPhoto, customAvatar, profilePic]);
+    if (!imgSrc) return;
+    if (pluginAvatar && imgSrc === pluginAvatar) setPluginAvatarFailed(true);
+    // A favicon that failed is remembered for its domain, across avatars.
+    if (isFavicon && faviconDomain) failedFaviconDomains.add(faviconDomain);
+    setFailed((prev) => new Set(prev).add(imgSrc));
+  }, [imgSrc, pluginAvatar, isFavicon, faviconDomain]);
 
   return (
     <div

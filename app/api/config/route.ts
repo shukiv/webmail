@@ -69,6 +69,9 @@ export async function GET(request: NextRequest) {
       settingsSyncEnabled: configManager.get<boolean>('settingsSyncEnabled', false) && hasSessionSecret(),
       stalwartFeaturesEnabled,
       stalwartJmapPassthroughEnabled,
+      // Whether /api/account-avatar has a service to ask; its address and
+      // key stay on the server.
+      accountAvatarEnabled: !!configManager.get<string>('accountAvatarUrl', '').trim(),
       devMode: configManager.get<boolean>('devMode', false),
       faviconUrl: branded<string>('faviconUrl', '/branding/Bulwark_Favicon.svg'),
       appLogoLightUrl: branded<string>('appLogoLightUrl', ''),

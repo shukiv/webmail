@@ -7,6 +7,8 @@ import type { ParsedWebcal } from "@/lib/protocol-handlers/webcal";
 import type { AccountEntry } from "@/stores/account-store";
 import { cn } from "@/lib/utils";
 import { Avatar } from "@/components/ui/avatar";
+import { useConfig } from "@/hooks/use-config";
+import { accountAvatarSrc } from "@/lib/account-avatar";
 
 type ProtocolAccountPickerProps = {
   accounts: AccountEntry[];
@@ -38,6 +40,7 @@ export function ProtocolAccountPicker({
 }: ProtocolAccountPickerProps) {
   const t = useTranslations("protocol_handlers");
   const tCommon = useTranslations("common");
+  const { accountAvatarEnabled } = useConfig();
   const details = operation
     ? kind === "mailto"
       ? [
@@ -112,6 +115,7 @@ export function ProtocolAccountPicker({
                 )}
               >
                 <Avatar
+                  src={accountAvatarSrc(accountAvatarEnabled, account.cookieSlot)}
                   name={account.displayName || account.label}
                   email={account.email || account.username}
                   size="md"

@@ -10,6 +10,8 @@ import { useManagedAccountStore } from '@/stores/managed-account-store';
 import type { SharedAccount } from '@/lib/jmap/types';
 import { SettingsSection, SettingItem } from './settings-section';
 import { Avatar } from '@/components/ui/avatar';
+import { useConfig } from '@/hooks/use-config';
+import { accountAvatarSrc } from '@/lib/account-avatar';
 import { Button } from '@/components/ui/button';
 import { useRouter } from '@/i18n/navigation';
 import { getMaxAccounts } from '@/lib/account-utils';
@@ -325,6 +327,7 @@ function AccountRow({
   onSetDefault,
   labels,
 }: AccountRowProps) {
+  const { accountAvatarEnabled } = useConfig();
   return (
     <div
       draggable
@@ -350,6 +353,7 @@ function AccountRow({
 
       <div className="relative flex-shrink-0">
         <Avatar
+          src={accountAvatarSrc(accountAvatarEnabled, account.cookieSlot)}
           name={account.displayName || account.label}
           email={account.email || account.username}
           size="sm"

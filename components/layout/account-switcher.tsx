@@ -15,6 +15,8 @@ import { isDocumentRTL } from "@/i18n/direction";
 import { cn } from "@/lib/utils";
 import { useRouter } from "@/i18n/navigation";
 import { Avatar } from "@/components/ui/avatar";
+import { useConfig } from "@/hooks/use-config";
+import { accountAvatarSrc } from "@/lib/account-avatar";
 import { useMenuNavigation } from "@/hooks/use-menu-navigation";
 import { toUnicodeDomain, toUnicodeEmail } from "@/lib/idn";
 
@@ -34,8 +36,10 @@ interface AccountSwitcherProps {
 }
 
 function AccountAvatar({ account, size = "sm" }: { account: AccountEntry; size?: "sm" | "md" | "xl" }) {
+  const { accountAvatarEnabled } = useConfig();
   return (
     <Avatar
+      src={accountAvatarSrc(accountAvatarEnabled, account.cookieSlot)}
       name={account.displayName || account.label}
       email={account.email || account.username}
       size="sm"
