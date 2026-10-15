@@ -22,6 +22,8 @@ export interface ConfigData {
   stalwartJmapPassthroughEnabled: boolean;
   /** The signed-in account's own picture comes from /api/account-avatar. */
   accountAvatarEnabled: boolean;
+  /** Senders' pictures come from /api/sender-avatars. */
+  senderAvatarEnabled: boolean;
   devMode: boolean;
   faviconUrl: string;
   appLogoLightUrl: string;
@@ -163,6 +165,7 @@ export function useConfig(): AppConfig {
     stalwartFeaturesEnabled: configCache?.stalwartFeaturesEnabled ?? true,
     stalwartJmapPassthroughEnabled: configCache?.stalwartJmapPassthroughEnabled ?? true,
     accountAvatarEnabled: configCache?.accountAvatarEnabled || false,
+    senderAvatarEnabled: configCache?.senderAvatarEnabled || false,
     devMode: configCache?.devMode || false,
     faviconUrl: configCache?.faviconUrl || '/branding/Bulwark_Favicon.svg',
     appLogoLightUrl: configCache?.appLogoLightUrl || '',
@@ -208,6 +211,7 @@ export function useConfig(): AppConfig {
         stalwartFeaturesEnabled: configCache.stalwartFeaturesEnabled,
         stalwartJmapPassthroughEnabled: configCache.stalwartJmapPassthroughEnabled,
         accountAvatarEnabled: configCache.accountAvatarEnabled,
+        senderAvatarEnabled: configCache.senderAvatarEnabled,
         devMode: configCache.devMode,
         faviconUrl: configCache.faviconUrl,
         appLogoLightUrl: configCache.appLogoLightUrl,
@@ -254,6 +258,7 @@ export function useConfig(): AppConfig {
           stalwartFeaturesEnabled: data.stalwartFeaturesEnabled,
           stalwartJmapPassthroughEnabled: data.stalwartJmapPassthroughEnabled,
           accountAvatarEnabled: data.accountAvatarEnabled,
+          senderAvatarEnabled: data.senderAvatarEnabled,
           devMode: data.devMode,
           faviconUrl: data.faviconUrl,
           appLogoLightUrl: data.appLogoLightUrl,

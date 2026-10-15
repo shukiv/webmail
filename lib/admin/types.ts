@@ -315,10 +315,19 @@ export const CONFIG_ENV_MAP: Record<string, { envVar: string; fileEnvVar?: strin
   // or WebP it answers with; any other answer leaves the usual avatar.
   accountAvatarUrl: { envVar: 'ACCOUNT_AVATAR_URL', type: 'url', defaultValue: '' },
   accountAvatarKey: { envVar: 'ACCOUNT_AVATAR_KEY', fileEnvVar: 'ACCOUNT_AVATAR_KEY_FILE', fileKey: 'accountAvatarKeyFile', type: 'string', defaultValue: '' },
+  // Senders' pictures, from a service that knows them (a hosting panel and
+  // its own mailboxes). Empty = feature off. The webmail POSTs
+  // {"viewer": "<the signed-in address>", "emails": [...]} there, server to
+  // server, with `Authorization: Bearer <senderAvatarKey>` (empty = the
+  // account-avatar key), and shows the pictures it answers with:
+  // {"pictures": {"<email>": "<base64 PNG, JPEG, GIF or WebP>"}}. Which
+  // senders a viewer may see is the service's call.
+  senderAvatarUrl: { envVar: 'SENDER_AVATAR_URL', type: 'url', defaultValue: '' },
+  senderAvatarKey: { envVar: 'SENDER_AVATAR_KEY', fileEnvVar: 'SENDER_AVATAR_KEY_FILE', fileKey: 'senderAvatarKeyFile', type: 'string', defaultValue: '' },
 };
 
 /** Keys that should never be exposed to the client config endpoint */
-export const SENSITIVE_CONFIG_KEYS = new Set(['oauthClientSecret', 'sessionSecret', 'accountAvatarKey']);
+export const SENSITIVE_CONFIG_KEYS = new Set(['oauthClientSecret', 'sessionSecret', 'accountAvatarKey', 'senderAvatarKey']);
 
 /** Admin session cookie name */
 export const ADMIN_SESSION_COOKIE = 'admin_session';

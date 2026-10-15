@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getStalwartCredentials } from '@/lib/stalwart/credentials';
 import { configManager } from '@/lib/admin/config-manager';
+import { avatarAddress } from '@/lib/avatar-service';
 
 export const runtime = 'nodejs';
 
@@ -36,19 +37,6 @@ function none(status = 404) {
   return new NextResponse(null, { status, headers: NONE_HEADERS });
 }
 
-/** A mailbox address as a sign-in name: one @, nothing blank or odd. */
-function signedInAddress(username: string): string | null {
-  const email = username.trim().toLowerCase();
-  if (email.length < 3 || email.length > 254) return null;
-  const at = email.indexOf('@');
-  if (at <= 0 || at !== email.lastIndexOf('@') || at === email.length - 1) return null;
-  for (const c of email) {
-    const code = c.codePointAt(0)!;
-    if (code <= 0x20 || code === 0x7f) return null;
-  }
-  return email;
-}
-
 export async function GET(request: NextRequest) {
   const endpoint = configManager.get<string>('accountAvatarUrl', '').trim();
   if (!endpoint) return none();
@@ -56,7 +44,7 @@ export async function GET(request: NextRequest) {
   const creds = await getStalwartCredentials(request);
   if (!creds) return none(401);
   if (!creds.trusted) return none();
-  const email = signedInAddress(creds.username);
+  const email = avatarAddress(creds.username);
   if (!email) return none();
 
   const key = configManager.get<string>('accountAvatarKey', '');

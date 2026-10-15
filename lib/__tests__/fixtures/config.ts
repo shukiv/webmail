@@ -15,6 +15,7 @@ export function createConfig(overrides: Partial<ConfigData> = {}): ConfigData {
     stalwartFeaturesEnabled: true,
     stalwartJmapPassthroughEnabled: true,
     accountAvatarEnabled: false,
+    senderAvatarEnabled: false,
     devMode: false,
     faviconUrl: '/branding/Bulwark_Favicon.svg',
     appLogoLightUrl: '',

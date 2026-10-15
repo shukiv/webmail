@@ -59,6 +59,7 @@ export const LITE_FORCED_FLAGS = {
   stalwartJmapPassthroughEnabled: false,
   // No server routes in the static build.
   accountAvatarEnabled: false,
+  senderAvatarEnabled: false,
   devMode: false,
 } as const satisfies Partial<ConfigData>;
 

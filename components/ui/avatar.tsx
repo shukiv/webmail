@@ -8,6 +8,7 @@ import { useConfig } from "@/hooks/use-config";
 import { avatarHooks } from "@/lib/plugin-hooks";
 import { withBasePath } from "@/lib/browser-navigation";
 import { IS_LITE } from "@/lib/lite";
+import { knownSenderAvatar, senderAvatar } from "@/lib/sender-avatar";
 
 const IS_DEV = process.env.NODE_ENV !== "production";
 
@@ -161,11 +162,32 @@ export function Avatar({ name, email, contactPhotoUri, size = "md", className, d
   const [pluginAvatarFailed, setPluginAvatarFailed] = useState(false);
   const senderFavicons = useSettingsStore((s) => s.senderFavicons);
   const contacts = useContactStore((s) => s.contacts);
-  const { devMode } = useConfig();
+  const { devMode, senderAvatarEnabled } = useConfig();
+  // A sender's picture from the server's avatar service (/api/sender-avatars).
+  // Not asked for when src is given: that is the account's own picture.
+  const askSender = !IS_LITE && senderAvatarEnabled && !disableImages && !src && !!email;
+  // undefined while the ask is out.
+  const [senderPic, setSenderPic] = useState<string | null | undefined>(() => (askSender ? knownSenderAvatar(email!) : null));
 
   useEffect(() => {
     setFailed(new Set());
   }, [email, src]);
+
+  useEffect(() => {
+    if (!askSender || !email) {
+      setSenderPic(null);
+      return;
+    }
+    const known = knownSenderAvatar(email);
+    setSenderPic(known);
+    if (known !== undefined) return;
+    let cancelled = false;
+    senderAvatar(email).then(
+      (pic) => { if (!cancelled) setSenderPic(pic); },
+      () => { if (!cancelled) setSenderPic(null); },
+    );
+    return () => { cancelled = true; };
+  }, [askSender, email]);
 
   // Ask plugins (e.g. Gravatar) to resolve an avatar URL for this email address.
   // Runs whenever email or name changes; resets plugin avatar state on each change.
@@ -244,11 +266,13 @@ export function Avatar({ name, email, contactPhotoUri, size = "md", className, d
   const showFavicon =
     !IS_LITE && !disableFavicon && senderFavicons && faviconDomain && !PERSONAL_DOMAINS.has(faviconDomain) && !domainFailed;
 
-  // Priority: given src > contact photo > plugin avatar (e.g. Gravatar) > custom avatar > profile picture > company favicon > initials
+  // Priority: given src > contact photo > sender picture > plugin avatar (e.g. Gravatar) > custom avatar > profile picture > company favicon > initials
   const customAvatar = devMode && email ? CUSTOM_AVATARS[email.toLowerCase()] : null;
   const pluginAvatar = pluginAvatarFailed ? null : pluginAvatarUrl;
-  const faviconSrc = showFavicon ? withBasePath(`/api/favicon?domain=${encodeURIComponent(faviconDomain!)}`) : null;
-  const candidates = disableImages ? [] : [src, resolvedContactPhoto, pluginAvatar, customAvatar, profilePic, faviconSrc];
+  // The favicon waits for the sender picture's answer, so a sender who has a
+  // picture does not show their domain's icon first.
+  const faviconSrc = showFavicon && senderPic !== undefined ? withBasePath(`/api/favicon?domain=${encodeURIComponent(faviconDomain!)}`) : null;
+  const candidates = disableImages ? [] : [src, resolvedContactPhoto, senderPic, pluginAvatar, customAvatar, profilePic, faviconSrc];
   const imgSrc = candidates.find((c): c is string => !!c && !failed.has(c)) ?? null;
   const isFavicon = imgSrc !== null && imgSrc === faviconSrc;
 

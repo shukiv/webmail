@@ -39,6 +39,7 @@ const configValidators = {
   stalwartFeaturesEnabled: isBoolean,
   stalwartJmapPassthroughEnabled: isBoolean,
   accountAvatarEnabled: isBoolean,
+  senderAvatarEnabled: isBoolean,
   devMode: isBoolean,
   faviconUrl: isString,
   appLogoLightUrl: isString,
