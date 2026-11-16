@@ -125,6 +125,7 @@ import { emailHooks, uiHooks, renderHooks } from "@/lib/plugin-hooks";
 import type { AttachmentInfo, AttachmentPreview } from "@/lib/plugin-types";
 import { useAttachmentDrag, isDragOutSupported, type AttachmentDragSource } from "@/hooks/use-attachment-drag";
 import type { IJMAPClient } from "@/lib/jmap/client-interface";
+import { saveFile } from "@/lib/save-file";
 
 /** The More menu's two drill-downs: a folder list and a tag list. */
 type MoreMenuSub = 'move' | 'tag' | 'rules';
@@ -1987,12 +1988,7 @@ export function EmailViewer({
         window.open(transformed.previewUrl || objectUrl, '_blank', 'noopener,noreferrer');
       } else {
         emailHooks.onAttachmentDownload.emit(info);
-        const anchor = document.createElement('a');
-        anchor.href = objectUrl;
-        anchor.download = downloadName;
-        document.body.appendChild(anchor);
-        anchor.click();
-        anchor.remove();
+        void saveFile(blob, downloadName);
       }
 
       setTimeout(() => URL.revokeObjectURL(objectUrl), 60000);
@@ -2017,12 +2013,7 @@ export function EmailViewer({
       window.open(transformed.previewUrl || objectUrl, '_blank', 'noopener,noreferrer');
     } else {
       emailHooks.onAttachmentDownload.emit(info);
-      const anchor = document.createElement('a');
-      anchor.href = objectUrl;
-      anchor.download = downloadName;
-      document.body.appendChild(anchor);
-      anchor.click();
-      anchor.remove();
+      void saveFile(blob, downloadName);
     }
 
     setTimeout(() => URL.revokeObjectURL(objectUrl), 60_000);
@@ -2049,14 +2040,7 @@ export function EmailViewer({
         attachment.tnefData.byteOffset + attachment.tnefData.byteLength,
       ) as ArrayBuffer;
       const blob = new Blob([buffer], { type: attachment.type || 'application/octet-stream' });
-      const objectUrl = URL.createObjectURL(blob);
-      const anchor = document.createElement('a');
-      anchor.href = objectUrl;
-      anchor.download = downloadName;
-      document.body.appendChild(anchor);
-      anchor.click();
-      anchor.remove();
-      setTimeout(() => URL.revokeObjectURL(objectUrl), 60000);
+      void saveFile(blob, downloadName);
       return;
     }
 
@@ -2065,14 +2049,7 @@ export function EmailViewer({
     if (!bytes || bytes.byteLength === 0) return;
     const buffer = bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength) as ArrayBuffer;
     const blob = new Blob([buffer], { type: attachment.type || 'application/octet-stream' });
-    const objectUrl = URL.createObjectURL(blob);
-    const anchor = document.createElement('a');
-    anchor.href = objectUrl;
-    anchor.download = downloadName;
-    document.body.appendChild(anchor);
-    anchor.click();
-    anchor.remove();
-    setTimeout(() => URL.revokeObjectURL(objectUrl), 60_000);
+    void saveFile(blob, downloadName);
   }, [onDownloadAttachment, email?.id, resolveAttachmentName]);
 
   // Bundle every attachment of this email into a single .zip and download it.
@@ -2127,14 +2104,9 @@ export function EmailViewer({
       if (added === 0) return;
 
       const zipBlob = await zip.generateAsync({ type: 'blob', mimeType: 'application/zip' });
-      const objectUrl = URL.createObjectURL(zipBlob);
-      const anchor = document.createElement('a');
-      anchor.href = objectUrl;
-      anchor.download = attachmentsBundleFilename(email);
-      document.body.appendChild(anchor);
-      anchor.click();
-      anchor.remove();
-      setTimeout(() => URL.revokeObjectURL(objectUrl), 60_000);
+      // An iPhone cannot show a zip in its download preview; saveFile hands
+      // it to the share sheet there.
+      await saveFile(zipBlob, attachmentsBundleFilename(email));
     } finally {
       setIsDownloadingAll(false);
     }

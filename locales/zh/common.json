@@ -337,6 +337,8 @@
     "important": "重要",
     "download": "下载",
     "download_all": "全部下载",
+    "save_ready": "已准备好保存",
+    "save_file": "保存",
     "from": "发件人",
     "to": "收件人",
     "cc": "抄送",

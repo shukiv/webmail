@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { IntlProvider } from "@/components/providers/intl-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { CalendarAlertProvider } from "@/components/providers/calendar-alert-provider";
+import { SaveFileText } from "@/components/providers/save-file-text";
 import { EmbeddedBridgeProvider } from "@/components/providers/embedded-bridge-provider";
 import { RateLimitToastProvider } from "@/components/providers/rate-limit-toast-provider";
 import { TourProvider } from "@/components/tour/tour-provider";
@@ -61,6 +62,7 @@ export default async function LocaleLayout({
                   <PluginOAuthCallbackListener />
                   <PWAInstallPrompt />
                   <PushNotificationPrompt />
+                  <SaveFileText />
                 </ProtocolLaunchHandlerProvider>
               </TourProvider>
             </EmbeddedBridgeProvider>

@@ -21,6 +21,7 @@ import { acceptedFileName, fileNameRulesFrom, type FileNameRules } from "@/lib/f
 import { getEffectiveTimeZone, toLocalDateTime } from "@/lib/timezone";
 import { buildEmailSort, compareEmails, hasKeywordLevels, type KeywordSortPolarity, type SortLevel } from "@/lib/message-list-order";
 import { toInertBlob } from "@/lib/file-preview";
+import { saveFile } from "@/lib/save-file";
 
 // Cap for the follow-up Email/get issued when a displayed body part comes
 // back truncated at the normal 256000-byte limit (see refetchTruncatedBodyValues
@@ -8361,15 +8362,7 @@ export class JMAPClient implements IJMAPClient {
 
   async downloadBlob(blobId: string, name?: string, type?: string, accountId?: string): Promise<void> {
     const blob = await this.fetchBlob(blobId, name, type, accountId);
-    const blobUrl = URL.createObjectURL(blob);
-
-    const a = document.createElement('a');
-    a.href = blobUrl;
-    a.download = name || 'download';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(blobUrl);
+    await saveFile(blob, name || 'download');
   }
 
   private pollingInterval: NodeJS.Timeout | null = null;

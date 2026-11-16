@@ -337,6 +337,8 @@
     "important": "重要",
     "download": "ダウンロード",
     "download_all": "すべてダウンロード",
+    "save_ready": "保存の準備ができました",
+    "save_file": "保存",
     "from": "送信者",
     "to": "宛先",
     "cc": "CC",
